@@ -10,6 +10,5 @@ public interface CollectRepository {
 	//List<Alert> findAll();
 	//Alert save(Alert alert);
 	void collect();
-
 	void save(List<GitModel> gitModel);
 }

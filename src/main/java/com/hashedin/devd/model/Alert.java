@@ -21,6 +21,8 @@ public class Alert {
 	private boolean isBrokeBuild;
 	private boolean FrequentCommits;
 	private int lastCommitedAt;
+	private String url;
+	
 	
 	public long getGitPullrequestId() {
 		return gitPullrequestId;
@@ -53,8 +55,5 @@ public class Alert {
 	public void setBrokeBuild(boolean isBrokeBuild) {
 		this.isBrokeBuild = isBrokeBuild;
 	}
-
-	
-
 
 }

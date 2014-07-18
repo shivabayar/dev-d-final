@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.alert.AlertFilter;
-import com.hashedin.devd.model.Alert;
-import com.hashedin.devd.model.GitCommit;
+import com.hashedin.devd.integration.CreateGitModelObject;
+
 import com.hashedin.devd.model.GitModel;
 
 
@@ -34,13 +34,18 @@ public class CollectRepositoryImpl implements CollectRepository {
 	
 	@Autowired
 	private AlertRepository alertRepository;
+	
+	
 	@Override
 	public void collect() {
 		
-		List<GitCommit> commits =integrationInterface.fetchData();
-		gitCommitRepository.save(commits);
-		List<Alert> alertList = alertFilter.createAlerts(commits);
-		alertRepository.save(alertList);
+		//List<GitCommit> commits =integrationInterface.fetchData();
+		//gitCommitRepository.save(commits);
+		//List<Alert> alertList = alertFilter.createAlerts(commits);
+		//alertRepository.save(alertList);
+		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+		List<GitModel> listGitModel = createGitModelObject.gitModelObject("https://api.github.com/users/tanwanirahul/events/public");
+		save(listGitModel);
 	}
 	
 	@Override

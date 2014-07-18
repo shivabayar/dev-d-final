@@ -2,6 +2,7 @@ package com.hashedin.devd.integration;
 
 import com.hashedin.devd.realdata.JavaUrlConnectionReader;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,88 +17,37 @@ import org.json.JSONObject;
 
 public class CommitedAt {
 
-	
-	
-	//get recent commited At from database
-	
-	
-	public int lastCommitedAt(String userName) {
+	// get recent commited At from database
 
-		JavaUrlConnectionReader realData = new JavaUrlConnectionReader();
-		String output = realData.getUrlContents("userName");
-
-		long l = 0;
-		String createdAt = "";
-		JSONArray jArray;
-		try {
-		jArray = new JSONArray(output);
-		createdAt = createdAt(output, jArray.length() - 1);
-		
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public int lastCommitedAt(String createdAt) {
+		long l;
 		l = dayDifferenceCalculator(createdAt);
 		return (int) l;
 	}
 
 	
+	// get data list of createdata from data base
 
-	public String createdAt(String output, int i) {
-
-		String createdAt = "";
-		JSONArray jArray;
-
-		try {
-			jArray = new JSONArray(output);
-
-			JSONObject jsonObj = jArray.getJSONObject(i);
-
-			createdAt = (String) jsonObj.get("created_at");
-
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return createdAt;
-	}
-
-	
-	
-	public void frequencyCalculator() {
-	//	JavaUrlConnectionReader realData = new JavaUrlConnectionReader();
-	//	String output = realData.getUrlContents("userName");
-
-		long l = 0;
-		List<Integer> a = new ArrayList<Integer>();
-
-		String createdAt = "";
-		JSONArray jArray;
-		try {
-			jArray = new JSONArray(output);
-
-			for (int i = jArray.length() - 1; i > 7; --i) {
-
-				createdAt = createdAt(output, i);
-				l = dayDifferenceCalculator(createdAt);
-
-				int j;
-
-				j = (int) l;
-
-				a[j]++;
-
-			}
-
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public Boolean isFrequentComits(List<String>CreatedAtList){
 		
+		int l =0,preDiff=0,count=0,pre=0;
+		float avg =0;
+		
+			for (String createdAt :CreatedAtList) {
+				
+					l = (int) dayDifferenceCalculator(createdAt);
+								
+					preDiff= l - pre;
+					pre = l;
+					avg = preDiff/count;					
+					count++;
+			}
+			return avg >2 ? false :true;
 	}
 	
-	public long dayDifferenceCalculator(String createdAt) {
+	
+	
+	public  long dayDifferenceCalculator(String createdAt) {
 
 		long diffdays = 0;
 
@@ -125,4 +75,21 @@ public class CommitedAt {
 
 		return diffdays;
 	}
+
+	
+	/*
+	 * dont need while using database public String createdAt(String output, int
+	 * i) {
+	 * 
+	 * String createdAt = ""; JSONArray jArray;
+	 * 
+	 * try { jArray = new JSONArray(output);
+	 * 
+	 * JSONObject jsonObj = jArray.getJSONObject(i);
+	 * 
+	 * createdAt = (String) jsonObj.get("created_at");
+	 * 
+	 * } catch (JSONException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } return createdAt; }
+	 */
 }

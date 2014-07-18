@@ -1,7 +1,8 @@
-package com.hashedin.devd.rest;
+ package com.hashedin.devd.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hashedin.devd.repository.CollectRepository;
+
+
 //import com.hashedin.devd.service.CollectService;
 
 @Component
@@ -25,6 +28,12 @@ public class CollectResource {
 		collectRepository.collect();
 	}
 	
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Path("/{userId}")
+	public void find(@PathParam("userId") Long userId){
+		
+	}
 //	@POST
 //	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 //	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
