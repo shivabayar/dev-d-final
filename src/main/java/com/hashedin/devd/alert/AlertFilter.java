@@ -14,26 +14,25 @@ import com.hashedin.devd.alert.AlertFunction;
 @Repository
 public class AlertFilter {
 
-	private List<String> CreatedAtList;
+	public List<String> CreatedAtList;
 
 	public Alert createFilter(List<GitModel> gitModel) {
 
 		Alert a = new Alert();
 		AlertFunction alert = new AlertFunction();
-
 		CreatedAtList = new ArrayList<String>();
 
 		for (GitModel model : gitModel) {
 			CreatedAtList.add(model.getCreatedAt());
 		}
-
-		int i = CreatedAtList.size()-1;
-
+		int i = CreatedAtList.size() - 1;
 		GitModel model = gitModel.get(i);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
-		a.setFrequentCommits(alert.isFrequentComits(CreatedAtList));
-
+		System.out.println("getting lastcommited"+ a.getLastCommitedAt());
+		a.setIsFrequentCommits(alert.isFrequentComits(CreatedAtList));
+		System.out.println("gettting is freq commit "+a.isFrequentCommits());
+		
 		return a;
 	}
 

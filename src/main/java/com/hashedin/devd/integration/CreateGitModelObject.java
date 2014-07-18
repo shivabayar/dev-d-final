@@ -41,15 +41,13 @@ public class CreateGitModelObject {
 								.getJSONObject("pull_request");
 						JSONObject jsonObj3 = jsonObj.getJSONObject("actor");
 						String type2 = (String) jsonObj3.get("url");
-						int  type1 =  (Integer) jsonObj3.get("id");
+						int type1 = (Integer) jsonObj3.get("id");
 						gitModel.setUserGitUrl(type2);
-						//gitModel.setGitUserId(type1);
+						// gitModel.setGitUserId(type1);
 						Boolean merged = (Boolean) jsonObj2.get("merged");
-
 						gitModel.setPullAction(merged);
-						
-					} else {
 
+					} else {
 						gitModel.setPullAction(true);
 					}
 				}

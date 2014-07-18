@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.alert.AlertFilter;
 import com.hashedin.devd.integration.CreateGitModelObject;
-
 import com.hashedin.devd.model.Alert;
-import com.hashedin.devd.model.GitCommit;
-
 import com.hashedin.devd.model.GitModel;
 
 
@@ -46,7 +43,7 @@ private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
 		
 		//List<GitCommit> commits =integrationInterface.fetchData();
 		//gitCommitRepository.save(commits);
-			List<GitModel> listGitModel = createGitModelObject.gitModelObject("tanwanirahul");
+		List<GitModel> listGitModel = createGitModelObject.gitModelObject("tanwanirahul");
 		save(listGitModel);
 		Alert alertList = alertFilter.createFilter(listGitModel);
 		alertRepository.save(alertList);
