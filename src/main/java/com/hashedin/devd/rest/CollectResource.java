@@ -34,8 +34,8 @@ public class CollectResource {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{userId}")
-<<<<<<< HEAD
-	public void find(@PathParam("userId") Long userId){
+
+/*	public void find(@PathParam("userId") Long userId){
 		
 	}
 //	@POST
@@ -52,9 +52,9 @@ public class CollectResource {
 //				.build();
 //	}
 }
-=======
+*/
 	public List<GitModel> find(@PathParam("userId") Long userId){
 		return collectRepository.find(userId);
 	}
 }
->>>>>>> f12a02ca79a83436f79c067846a8bbd2f05af086
+

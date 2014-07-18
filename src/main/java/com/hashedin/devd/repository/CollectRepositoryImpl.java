@@ -13,12 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.alert.AlertFilter;
 import com.hashedin.devd.integration.CreateGitModelObject;
-<<<<<<< HEAD
 
-=======
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitCommit;
->>>>>>> f12a02ca79a83436f79c067846a8bbd2f05af086
+
 import com.hashedin.devd.model.GitModel;
 
 
@@ -41,32 +39,24 @@ public class CollectRepositoryImpl implements CollectRepository {
 	@Autowired
 	private AlertRepository alertRepository;
 	
-<<<<<<< HEAD
+
 	
 	@Override
 	public void collect() {
 		
 		//List<GitCommit> commits =integrationInterface.fetchData();
 		//gitCommitRepository.save(commits);
-		//List<Alert> alertList = alertFilter.createAlerts(commits);
-		//alertRepository.save(alertList);
+	
+	
 		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
 		List<GitModel> listGitModel = createGitModelObject.gitModelObject("https://api.github.com/users/tanwanirahul/events/public");
 		save(listGitModel);
-=======
-	private CreateGitModelObject createGitModelObject;
-	@Override
-	public void collect() {
-		
-		List<GitCommit> commits =integrationInterface.fetchData();
-		gitCommitRepository.save(commits);
-		//List<Alert> alertList = alertFilter.createAlerts(commits);
-		//alertRepository.save(alertList);
-		//List<GitModel> listGitModel = createGitModelObject.gitModelObject(" https://api.github.com/users/tanwanirahul/events/public");
-		//save(listGitModel);
->>>>>>> f12a02ca79a83436f79c067846a8bbd2f05af086
+		Alert alertList = alertFilter.createFilter(listGitModel);
+		alertRepository.save(alertList);
 	}
 	
+	
+	private CreateGitModelObject createGitModelObject;
 	@Override
 	@Transactional
 	public void save(List<GitModel> gitModel) {
