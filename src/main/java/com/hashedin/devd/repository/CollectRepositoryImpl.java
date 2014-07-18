@@ -45,8 +45,8 @@ private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
 		//gitCommitRepository.save(commits);
 		List<GitModel> listGitModel = createGitModelObject.gitModelObject("tanwanirahul");
 		save(listGitModel);
-		Alert alertList = alertFilter.createFilter(listGitModel);
-		alertRepository.save(alertList);
+		//Alert alertList = alertFilter.createFilter(listGitModel);
+		//alertRepository.save(alertList);
 	
 	}
 	@Override

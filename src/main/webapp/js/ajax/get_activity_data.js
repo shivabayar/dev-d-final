@@ -1,4 +1,4 @@
-function loadData(url1){
+function loadDataActivity(url1){
   $.ajax({url:url1,success:function(result){
       var data = $.parseJSON(result);
       var res = "";
@@ -10,4 +10,4 @@ function loadData(url1){
   }});
 }
 
-loadData("activity.txt");
+loadDataActivity("activity.txt");

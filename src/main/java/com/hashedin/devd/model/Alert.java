@@ -11,7 +11,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "alerts")
+
 @NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a") })
+//@NamedQuery(name = "Alert.find", query = "SELECT a FROM Alert a where gitUserId=:userid")})
+
 public class Alert {
 
 	@Id
@@ -63,6 +66,7 @@ public class Alert {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	public long getGitUserId() {
 		return gitUserId;
 	}

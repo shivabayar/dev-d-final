@@ -1,28 +1,23 @@
-function loadXMLDoc(url)
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200){
 
-      console.log (innerHTML=xmlhttp.status);
-      data = $.parseJSON(xmlhttp.responseText);
-      $.each(data, function(i, item) {
-          console.log (item);
-      document.getElementById('alerts-info').innerHTML += "<span><h4>"+item.alertMessage+"</h4></span><a href="+item.link+">link</a>";
+function loadDataAlerts(url1){
+  $.ajax({url:url1,
+	  headers: { 'ACCEPT': 'application/json' },
+	  success:function(response){
+		  var result = "";       
+//      console.log (response.brokeBuild);
+      $.each(response, function(i, item) {
+    	  
+          if(item.brokeBuild === true){
+        	  console.log (item.lastCommitedAt+"fre");  
+        	  result += "<font color=red><span><h4>You Broke a build</h4></span></font><a href="+item.url+">click here to navigate</a>";
+          }
+          if(item.frequentCommits === true && item.lastCommitedAt <= 2){
+        	  result += '</br><strong><font color=green>Frequent Commits <span style="font-size:18px;">&#10003;</span></font></strong>';
+          }
       });
-    }
-  }
-xmlhttp.open("GET",url,true);
-xmlhttp.send();
+      $("#alerts-info").html(result);    
+  }});
+  
 }
 
-loadXMLDoc("alert.txt");
+loadDataAlerts("api/alerts");
