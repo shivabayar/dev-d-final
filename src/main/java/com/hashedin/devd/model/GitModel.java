@@ -18,7 +18,6 @@ public class GitModel {
 	@Id
 	@GeneratedValue
 	private long gitUserId;
-
 	private String userGitUrl;
 	private boolean pullAction;
 	private String createdAt;

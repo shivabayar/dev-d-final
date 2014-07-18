@@ -9,7 +9,7 @@ public class JavaUrlConnectionReader {
 		StringBuilder content = new StringBuilder();
 
 		try {
-			URL url = new URL(userName);
+			URL url = new URL("https://api.github.com/user/"+userName+"/events/public");
 			URLConnection urlConnection = url.openConnection();
 
 			BufferedReader bufferedReader = new BufferedReader(
