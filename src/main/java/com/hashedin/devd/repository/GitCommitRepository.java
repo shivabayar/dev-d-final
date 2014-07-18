@@ -2,6 +2,8 @@ package com.hashedin.devd.repository;
 
 import java.util.List;
 
+import org.jvnet.hk2.annotations.Service;
+
 import com.hashedin.devd.model.GitCommit;
 
 public interface GitCommitRepository {

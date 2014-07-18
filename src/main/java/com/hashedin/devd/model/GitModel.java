@@ -12,7 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "gitModel")
-@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u") })
+@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u"),
+@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where gitUserId =:userId")	
+})
 public class GitModel {
 
 	@Id
@@ -53,6 +55,12 @@ public class GitModel {
 	}
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
+	}
+	@Override
+	public String toString() {
+		return "GitModel [gitUserId=" + gitUserId + ", userGitUrl="
+				+ userGitUrl + ", pullAction=" + pullAction + ", createdAt="
+				+ createdAt + ", eventType=" + eventType + "]";
 	}
 
 }

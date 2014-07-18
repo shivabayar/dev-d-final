@@ -23,7 +23,17 @@ public class Alert {
 	private int lastCommitedAt;
 	private String url;
 	private long gitUserId;
+
+
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public long getGitPullrequestId() {
 		return gitPullrequestId;
 	}
@@ -57,19 +67,12 @@ public class Alert {
 	}
 
 	public boolean isFrequentCommits() {
+
 		return isFrequentCommits();
 	}
 
 	public void setFrequentCommits(boolean frequentCommits) {
 		this.isFrequentCommits = frequentCommits;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	public long getGitUserId() {
@@ -80,4 +83,5 @@ public class Alert {
 		this.gitUserId = gitUserId;
 	}
 
+	
 }
