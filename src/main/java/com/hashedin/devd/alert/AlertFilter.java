@@ -26,7 +26,9 @@ public class AlertFilter {
 		for (GitModel model : gitModel) {
 			CreatedAtList.add(model.getCreatedAt());
 		}
-		int i = CreatedAtList.size();
+
+		int i = CreatedAtList.size()-1;
+
 		GitModel model = gitModel.get(i);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));

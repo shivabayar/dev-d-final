@@ -6,4 +6,5 @@ import java.util.List;
 public interface DisplayInterface {
 
 	ArrayList<Integer> frequencyCalculator(List<String> CreatedAtList);
+
 }

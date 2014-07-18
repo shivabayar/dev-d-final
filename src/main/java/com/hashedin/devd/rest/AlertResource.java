@@ -9,6 +9,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -33,8 +34,6 @@ public class AlertResource {
 	public List<Alert> listAll() {
 		// Handles GET on /alerts. Lists all the alerts we have in our
 		// system.
-		//System.out.println("\n\n\n"+"/alerts");
-		
 		return alertService.findAll();
 	}
 	
@@ -50,5 +49,12 @@ public class AlertResource {
 		response.setStatus(Response.Status.CREATED.getStatusCode());
 		return Response.created(new URI("/alerts/" + alert.getAlertId()))
 				.build();
+	}
+	
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Path("/{userid}")
+	public Alert find(@PathParam("userid") Long userid) {
+		return alertService.find(userid);
 	}
 }

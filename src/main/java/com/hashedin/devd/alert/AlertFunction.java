@@ -19,12 +19,26 @@ public class AlertFunction implements AlertInterface {
 		float avg = 0;
 		CommitedAt commitedAt = new CommitedAt();
 
+<<<<<<< HEAD
 		for (String createdAt : CreatedAtList) {
 			l = (int) commitedAt.dayDifferenceCalculator(createdAt);
 			preDiff = l - pre;
 			pre = l;
 			avg = preDiff / count;
 			count++;
+=======
+
+		for (int i = 0; i < CreatedAtList.size(); ++i) {
+
+			String createdAt = CreatedAtList.get(i);
+			l = (int) commitedAt.dayDifferenceCalculator(createdAt);
+			if (i > 1) {
+				preDiff = l - pre;
+				pre = l;
+				avg = preDiff / count;
+				count++;
+			}
+>>>>>>> 58c619affedee161baa446679b7ea6abd6c38d46
 		}
 		return avg > 2 ? false : true;
 	}

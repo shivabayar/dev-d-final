@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.Alert;
+import com.hashedin.devd.model.GitCommit;
 
 @Repository("alertRepository")
 @Service
@@ -20,9 +21,14 @@ public class AlertRepositoryImpl implements AlertRepository {
 	private EntityManager em;
 
 	@Override
-	public Alert find(Long alertId) {
-		// Returns the Task for given taskId.
-		return em.find(Alert.class, alertId);
+	public Alert find(Long userid) {
+		//TypedQuery<Alert> query = em.createNamedQuery("Alert.find",
+			//	Alert.class).setParameter("userid", userid);
+		//List<Alert> results = query.getResultList();
+//		return results;
+		Alert val= em.find(Alert.class, userid);
+		System.out.println("\n\n\n"+val);
+		return val;
 	}
 
 	@Override

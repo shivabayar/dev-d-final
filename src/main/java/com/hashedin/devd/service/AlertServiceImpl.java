@@ -27,4 +27,10 @@ public class AlertServiceImpl implements AlertService {
 		return alert;
 	}
 
+	@Override
+	public Alert find(long userid) {
+		alertRepository.find(userid);
+		return null;
+	}
+
 }
