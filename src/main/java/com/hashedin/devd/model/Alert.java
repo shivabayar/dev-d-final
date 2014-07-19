@@ -1,18 +1,20 @@
 package com.hashedin.devd.model;
 
 import javax.persistence.Entity;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
 @Table(name = "alerts")
+
+@NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a") })
 //@NamedQuery(name = "Alert.find", query = "SELECT a FROM Alert a where gitUserId=:userid")})
-@NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a")})
+
 public class Alert {
 
 	@Id
@@ -24,62 +26,52 @@ public class Alert {
 	private int lastCommitedAt;
 	private String url;
 	private long gitUserId;
-
-	public long getGitUserId() {
-		return gitUserId;
+	@SuppressWarnings("unused")
+	private boolean FrequentCommits ;
+	
+	
+	public long getAlertId() {
+		return alertId;
 	}
-
-	public void setGitUserId(long gitUserId) {
-		this.gitUserId = gitUserId;
+	public void setAlertId(long alertId) {
+		this.alertId = alertId;
 	}
-
+	public long getGitPullrequestId() {
+		return gitPullrequestId;
+	}
+	public void setGitPullrequestId(long gitPullrequestId) {
+		this.gitPullrequestId = gitPullrequestId;
+	}
+	public boolean isBrokeBuild() {
+		return isBrokeBuild;
+	}
+	public void setBrokeBuild(boolean isBrokeBuild) {
+		this.isBrokeBuild = isBrokeBuild;
+	}
+	public boolean isFrequentCommits() {
+		return isFrequentCommits;
+	}
+	public void setIsFrequentCommits(boolean isFrequentCommits) {
+		this.isFrequentCommits = isFrequentCommits;
+	}
+	public int getLastCommitedAt() {
+		return lastCommitedAt;
+	}
+	public void setLastCommitedAt(int lastCommitedAt) {
+		this.lastCommitedAt = lastCommitedAt;
+	}
 	public String getUrl() {
 		return url;
 	}
-
 	public void setUrl(String url) {
 		this.url = url;
 	}
 
-
-	public long getGitPullrequestId() {
-		return gitPullrequestId;
+	public long getGitUserId() {
+		return gitUserId;
+	}
+	public void setGitUserId(long gitUserId) {
+		this.gitUserId = gitUserId;
 	}
 
-	public void setGitPullrequestId(long gitPullrequestId) {
-		this.gitPullrequestId = gitPullrequestId;
-	}
-
-	public long getAlertId() {
-		return alertId;
-	}
-
-	public void setAlertId(long alertId) {
-		this.alertId = alertId;
-	}
-
-	public int getLastCommitedAt() {
-		return lastCommitedAt;
-	}
-
-	public void setLastCommitedAt(int lastCommitedAt) {
-		this.lastCommitedAt = lastCommitedAt;
-	}
-
-	public boolean isBrokeBuild() {
-		return isBrokeBuild;
-	}
-
-	public void setBrokeBuild(boolean isBrokeBuild) {
-		this.isBrokeBuild = isBrokeBuild;
-	}
-
-	public boolean isFrequentCommits() {
-		return isFrequentCommits;
-
-	}
-
-	public void setFrequentCommits(boolean frequentCommits) {
-		frequentCommits = frequentCommits;
-	}
 }
