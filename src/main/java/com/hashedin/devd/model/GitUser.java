@@ -16,12 +16,17 @@ public class GitUser {
 
 	@Id
 	@GeneratedValue
-	private long gitUserId; // owner of the repo
+	private long userId; // owner of the repo
+	private long gitUserId;
 	private String email;
 	private String apiKey;
 	private String userProfileUrl;
 	private String password;
 
+	public long getuserId() {
+		return userId;
+	}
+	
 	public long getGitUserId() {
 		return gitUserId;
 	}
