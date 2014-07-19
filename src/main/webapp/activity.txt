@@ -1,0 +1,10 @@
+[
+	{
+		"activityMessage":" first response from server",
+		"link":"www.google.com"
+	},
+	{
+		"activityMessage":"This the second response from server",
+		"link":"www.google.com"
+	}
+]

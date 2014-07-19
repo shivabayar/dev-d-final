@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "gitModel")
-@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u"),
-@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where gitUserId =:userId")	
-})
+@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u")})
+//@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where gitUserId =:userId")	
+//})
 public class GitModel {
 
 	@Id

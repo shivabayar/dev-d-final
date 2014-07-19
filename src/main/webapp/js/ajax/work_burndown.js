@@ -1,6 +1,6 @@
 google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
+      google.setOnLoadCallback(drawChartBurnDown);
+      function drawChartBurnDown() {
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Actual', 'Expected'],
           ['2013',  1000,      400],

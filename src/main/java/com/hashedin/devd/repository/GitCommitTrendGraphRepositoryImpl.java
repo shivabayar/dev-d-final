@@ -11,8 +11,12 @@ public class GitCommitTrendGraphRepositoryImpl implements GitCommitTrendGraphRep
 
 	DisplayList displayList=new DisplayList();
 	@Override
-	public List<Integer> collectCommitGraph() {
+	public List<Integer> collectCommitGraph() {  
+		
+		System.out.println("in to collectcommit graph");
 		return displayList.displayList();
+	
+	
 	}
 
 }

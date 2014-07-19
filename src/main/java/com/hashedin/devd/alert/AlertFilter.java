@@ -16,37 +16,35 @@ import com.hashedin.devd.alert.AlertFunction;
 @Repository
 public class AlertFilter {
 
-	private List<String> CreatedAtList;// = new ArrayList<String>();;
-	//private AlertFilter alertFilter=new AlertFilter();
-//	public AlertFilter() {
-//		CreatedAtList = new ArrayList<String>();
-//	}
-
+	private List<String> CreatedAtList;
 	public Alert createFilter(List<GitModel> gitModel) {
 
 		Alert a = new Alert();
 		AlertFunction alert = new AlertFunction();
 		List<String> tempList=new ArrayList<String>();
 		for (GitModel model : gitModel) {
-			tempList.add(model.getCreatedAt());
+		System.out.println("Testmodel "+"\n\n\n\n\n"+model);
+			
+			CreatedAtList.add(model.getCreatedAt());
+			System.out.println("Test first "+"\n\n\n\n\n"+CreatedAtList);
 		}
-		setCreatedAtList(tempList);
-		int i = getCreatedAtList().size()-1;//CreatedAtList.size()-1;
+		
+		setCreatedAtList(CreatedAtList);
+		
+		int i = CreatedAtList.size()-1;
 		GitModel model = gitModel.get(i);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
-		a.setFrequentCommits(alert.isFrequentComits(getCreatedAtList()));//CreatedAtList));
-
+		a.setFrequentCommits(alert.isFrequentComits(CreatedAtList));
 		return a;
 	}
 
 	public void setCreatedAtList(List<String> createdAtList) {
-		CreatedAtList = createdAtList;
+		this.CreatedAtList = createdAtList;
 	}
 
 	public List<String> getCreatedAtList() {
-		System.out.println("CreatedAtList jylhlugdufhitgjtgjiuj "+CreatedAtList);
-		
+		System.out.println("Test "+"\n\n\n\n\n"+CreatedAtList);
 		return CreatedAtList;
 	}
 

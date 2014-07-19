@@ -1,0 +1,10 @@
+[
+	{
+		"alertMessage":" first response from server",
+		"link":"www.google.com"
+	},
+	{
+		"alertMessage":"This the second response from server",
+		"link":"www.google.com"
+	}
+]

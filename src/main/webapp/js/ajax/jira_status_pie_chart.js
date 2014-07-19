@@ -1,6 +1,6 @@
       google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-    function drawChart() {
+      google.setOnLoadCallback(drawChartPieChart);
+    function drawChartPieChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           ['Open',     11],
