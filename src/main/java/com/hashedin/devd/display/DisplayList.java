@@ -3,23 +3,25 @@ package com.hashedin.devd.display;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hashedin.devd.alert.AlertFilter;
+import com.hashedin.devd.model.GitModel;
 
 public class DisplayList {
 
-	public ArrayList<Integer> displayList() {
-		ArrayList<Integer> displayList= new ArrayList<Integer>();
-		AlertFilter af = new AlertFilter();
-		DisplayImpl display = new DisplayImpl();
-		List<String> createdAt= new ArrayList<String>();
-		
-		createdAt = af.getCreatedAtList();
-		System.out.println("entyr into displaylist"+ af.getCreatedAtList());
-		
-		displayList = display.frequencyCalculator(createdAt);
+	 private ArrayList<Integer> displayList;
 
-		
+	public ArrayList<Integer> displayList() {
 		return displayList;
 	}
 
+	public void displayFilter(List<GitModel> gitModel) {
+
+		DisplayImpl display = new DisplayImpl();
+		List<String> createdAtList = new ArrayList<String>();
+		for (GitModel model : gitModel) {
+			createdAtList.add(model.getCreatedAt());
+		}
+
+		displayList = display.frequencyCalculator(createdAtList);
+
+	}
 }

@@ -15,7 +15,7 @@ import com.hashedin.devd.alert.AlertFilter;
 import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
-
+import com.hashedin.devd.display.DisplayList;
 
 @Repository("collectRepository")
 @Service
@@ -23,37 +23,42 @@ public class CollectRepositoryImpl implements CollectRepository {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Autowired 
+
+	@Autowired
 	private IntegrationInterface integrationInterface;
-	
+
 	@Autowired
 	private GitCommitRepository gitCommitRepository;
-	
+
 	@Autowired
 	private AlertFilter alertFilter;
-	
+
+	/*@Autowired
+	public DisplayList displayList;*/
+
 	@Autowired
 	private AlertRepository alertRepository;
-	
-private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+
+	private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+
 	@Override
 	@Transactional
 	public void collect() {
-		
-		//List<GitCommit> commits =integrationInterface.fetchData();
-		//gitCommitRepository.save(commits);
+
 		List<GitModel> listGitModel = createGitModelObject.gitModelObject("tanwanirahul");
+		Alert alertList = alertFilter.createFilter(listGitModel);
+
+		DisplayList displayList = new DisplayList();
+		displayList.displayFilter(listGitModel);
 		save(listGitModel);
-		//Alert alertList = alertFilter.createFilter(listGitModel);
-		//alertRepository.save(alertList);
-	
+		alertRepository.save(alertList);
 	}
+
 	@Override
 	@Transactional
 	public void save(List<GitModel> gitModel) {
-	
-		for( GitModel gitmodel : gitModel){
+
+		for (GitModel gitmodel : gitModel) {
 			em.persist(gitmodel);
 			em.flush();
 		}
@@ -65,7 +70,13 @@ private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
 				GitModel.class).setParameter("userId", userId);
 		List<GitModel> results = query.getResultList();
 		return results;
-		
+
 	}
-	
+
+	@Override
+	public Alert save(Alert alert) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

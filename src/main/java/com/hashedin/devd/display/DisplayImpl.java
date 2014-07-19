@@ -10,10 +10,12 @@ public class DisplayImpl implements DisplayInterface {
 	public ArrayList<Integer> frequencyCalculator(List<String> CreatedAtList) {
 		int l = 0;
 		CommitedAt commmitedAt = new CommitedAt();
-//		System.out.println("in frrequency calci");
+		
+		System.out.println("in frrequency calci");
+
 		ArrayList<Integer> a = new ArrayList<Integer>();
 		try {
-			for (int i = 0; i < CreatedAtList.size();++i){
+			for (int i = 0; i < CreatedAtList.size();++i) {
 
 				String createdAt = CreatedAtList.get(i);
 	//			System.out.println("inside forloop" + createdAt);

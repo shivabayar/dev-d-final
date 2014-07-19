@@ -29,8 +29,11 @@ public class AlertFilter {
 		GitModel model = gitModel.get(i);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
+		
 		System.out.println("getting lastcommited"+ a.getLastCommitedAt());
+		
 		a.setIsFrequentCommits(alert.isFrequentComits(CreatedAtList));
+		
 		System.out.println("gettting is freq commit "+a.isFrequentCommits());
 		
 		return a;
