@@ -1,4 +1,4 @@
-package com.hashedin.devd.rest;
+ package com.hashedin.devd.rest;
 
 import java.util.List;
 
@@ -34,7 +34,27 @@ public class CollectResource {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{userId}")
+
+/*	public void find(@PathParam("userId") Long userId){
+		
+	}
+//	@POST
+//	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+//	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+//	public Response create(Alert alert,
+//			@Context final HttpServletResponse response)
+//			throws URISyntaxException {
+//		// Handles POST on /alerts. Creates a new alert and adds it into an
+//		// repository.
+//		collectService.save(alert);
+//		response.setStatus(Response.Status.CREATED.getStatusCode());
+//		return Response.created(new URI("/collects/" + alert.getAlertId()))
+//				.build();
+//	}
+}
+*/
 	public List<GitModel> find(@PathParam("userId") Long userId){
 		return collectRepository.find(userId);
 	}
 }
+

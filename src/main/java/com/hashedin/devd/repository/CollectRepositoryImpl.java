@@ -1,4 +1,5 @@
 package com.hashedin.devd.repository;
+
 import com.hashedin.devd.display.DisplayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,47 +14,44 @@ import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
 
-
 @Repository("collectRepository")
 @Service
 public class CollectRepositoryImpl implements CollectRepository {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Autowired 
-	private IntegrationInterface integrationInterface;
-	
-	@Autowired
-	private GitCommitRepository gitCommitRepository;
-	
+
 	@Autowired
 	private AlertFilter alertFilter;
-	
+
+	/*
+	 * @Autowired public DisplayList displayList;
+	 */
+
 	@Autowired
 	private AlertRepository alertRepository;
-	
+
 	private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+
 	@Override
 	@Transactional
 	public void collect() {
-		
-		List<GitModel> listGitModel = createGitModelObject.gitModelObject("tanwanirahul");
+
+		List<GitModel> listGitModel = createGitModelObject
+				.gitModelObject("tanwanirahul");
 		Alert alertList = alertFilter.createFilter(listGitModel);
-	//added by pavan
-		DisplayList displayList =new DisplayList();
+
+		DisplayList displayList = new DisplayList();
 		displayList.displayFilter(listGitModel);
-		//
 		save(listGitModel);
 		alertRepository.save(alertList);
-	
 	}
-	
+
 	@Override
 	@Transactional
 	public void save(List<GitModel> gitModel) {
-	
-		for( GitModel gitmodel : gitModel){
+
+		for (GitModel gitmodel : gitModel) {
 			em.persist(gitmodel);
 			em.flush();
 		}
@@ -65,7 +63,13 @@ public class CollectRepositoryImpl implements CollectRepository {
 				GitModel.class).setParameter("userId", userId);
 		List<GitModel> results = query.getResultList();
 		return results;
-		
+
 	}
-	
+
+	@Override
+	public Alert save(Alert alert) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
