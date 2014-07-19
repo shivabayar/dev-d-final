@@ -19,14 +19,23 @@ public class GitModel {
 
 	@Id
 	@GeneratedValue
+	private long userId;
 	private long gitUserId;
-
 	private String userGitUrl;
 	private boolean pullAction;
 	private String createdAt;
 	private String eventType;
 	
 	
+	public long getUserId() {
+		return userId;
+	}
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+	public void setPullAction(boolean pullAction) {
+		this.pullAction = pullAction;
+	}
 	public long getGitUserId() {
 		return gitUserId;
 	}

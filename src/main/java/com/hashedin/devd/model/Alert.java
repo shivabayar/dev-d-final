@@ -20,7 +20,7 @@ public class Alert {
 	private long alertId;
 	private long gitPullrequestId;
 	private boolean isBrokeBuild;
-	private boolean IsFrequentCommits;
+	private boolean isFrequentCommits;
 	private int lastCommitedAt;
 	private String url;
 	private long gitUserId;
@@ -74,7 +74,7 @@ public class Alert {
 	}
 
 	public boolean isFrequentCommits() {
-		return IsFrequentCommits;
+		return isFrequentCommits;
 	}
 
 	public void setFrequentCommits(boolean frequentCommits) {

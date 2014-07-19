@@ -53,6 +53,7 @@ public class AlertRepositoryImpl implements AlertRepository {
 	@Transactional
 	public void save(Alert alert) {
 		// Saves the given task object and returns the same.
+		System.out.println("\n\n\n"+alert);
 			em.persist(alert);
 			em.flush();
 		

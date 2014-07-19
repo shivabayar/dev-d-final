@@ -69,5 +69,13 @@ public class CollectRepositoryImpl implements CollectRepository {
 		return results;
 		
 	}
+
+	@Override
+	public List<GitModel> list() {
+		TypedQuery<GitModel> query = em.createNamedQuery("GitModel.findAll",
+				GitModel.class);
+		List<GitModel> results = query.getResultList();
+		return results;
+	}
 	
 }

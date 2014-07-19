@@ -107,23 +107,26 @@ public class CommitedAt {
 		createdAt = createdAt.replace('T', ' ');
 
 		StringBuilder sb = new StringBuilder(createdAt);
-		sb.deleteCharAt(19);
+		if(sb.length()>=19){
+			sb.deleteCharAt(19);
+			}
 		String resultString = sb.toString();
 
 		DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		Date d1 = null;
-		try {
+		/*try {
 			d1 = df2.parse(resultString);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
+		}*/
+long diff = 0 ;
 		Date d2 = new Date();
-
-		long diff = d2.getTime() - d1.getTime();
-
+	if(	d2.equals(d1)){
+		
+		 diff = d2.getTime() - d1.getTime();
+	}
 		diffdays = diff / (24 * 60 * 60 * 1000);
 
 		return diffdays;
