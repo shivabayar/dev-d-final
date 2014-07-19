@@ -26,7 +26,7 @@ public class CreateGitModelObject {
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject jsonObj = jArray.getJSONObject(i);
 				String type = (String) jsonObj.get("type");
-				String url;
+				
 				GitModel gitModel = new GitModel();
 				if (type.endsWith("PushEvent")
 						|| type.endsWith("PullRequestEvent")) {
@@ -40,9 +40,10 @@ public class CreateGitModelObject {
 						JSONObject jsonObj2 = jsonObj1
 								.getJSONObject("pull_request");
 						JSONObject jsonObj3 = jsonObj.getJSONObject("actor");
-						String type2 = (String) jsonObj3.get("url");
-						int type1 = (Integer) jsonObj3.get("id");
-						gitModel.setUserGitUrl(type2);
+						String url1 = (String) jsonObj3.get("url");
+						gitModel.setUserGitUrl(url1);
+						//	int type1 = (Integer) jsonObj3.get("id");
+						
 						// gitModel.setGitUserId(type1);
 						Boolean merged = (Boolean) jsonObj2.get("merged");
 						gitModel.setPullAction(merged);
@@ -52,7 +53,7 @@ public class CreateGitModelObject {
 					}
 				}
 				modelObjList.add(gitModel);
-				System.out.println(gitModel);
+				//System.out.println(gitModel);
 			}
 
 		} catch (JSONException e) {

@@ -9,8 +9,9 @@ public class JavaUrlConnectionReader {
 		StringBuilder content = new StringBuilder();
 
 		try {
-	URL url = new URL("https://api.github.com/users/" + userName+ "/events/public");
-			//URL url = new URL(userName);
+			URL url = new URL("https://api.github.com/users/" + userName
+					+ "/events/public");
+			// URL url = new URL(userName);
 
 			URLConnection urlConnection = url.openConnection();
 
@@ -21,11 +22,11 @@ public class JavaUrlConnectionReader {
 				content.append(line + "\n");
 			}
 			bufferedReader.close();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//System.out.println("Output\n\n\n"+content.toString());
-		
+		// System.out.println("Output\n\n\n"+content.toString());
+
 		return content.toString();
 	}
 }

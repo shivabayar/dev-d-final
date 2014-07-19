@@ -1,35 +1,28 @@
 package com.hashedin.devd.display;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.hashedin.devd.integration.CommitedAt;
 
 public class DisplayImpl implements DisplayInterface {
 
 	@Override
-	public ArrayList<Integer> frequencyCalculator(List<String> CreatedAtList) {
+	public int[] frequencyCalculator(List<String> CreatedAtList) {
 		int l = 0;
 		CommitedAt commmitedAt = new CommitedAt();
+		String createdAt = "";
+		int b[]=new int[8];
 		
-		System.out.println("in frrequency calci");
-
-		ArrayList<Integer> a = new ArrayList<Integer>();
 		try {
-			for (int i = 0; i < CreatedAtList.size();++i) {
-
-				String createdAt = CreatedAtList.get(i);
-	//			System.out.println("inside forloop" + createdAt);
+			for (int i = 0; i < CreatedAtList.size(); ++i) {
+				createdAt = CreatedAtList.get(i);
 				l = (int) commmitedAt.dayDifferenceCalculator(createdAt);
-				if (l < 8) {
-					a.set(l, a.get(l) + 1);
-				}
+				if (l < 6 || l == 0) {
+					b[l]=++b[l];
+					}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-
-		//System.out.println("returning arraylist" + a);
-
-		return a;
+		return b;
 	}
 }

@@ -7,9 +7,9 @@ import com.hashedin.devd.model.GitModel;
 
 public class DisplayList {
 
-	 private ArrayList<Integer> displayList;
+	private int[] displayList;
 
-	public ArrayList<Integer> displayList() {
+	public int[] displayList() {
 		return displayList;
 	}
 
@@ -20,8 +20,7 @@ public class DisplayList {
 		for (GitModel model : gitModel) {
 			createdAtList.add(model.getCreatedAt());
 		}
-
 		displayList = display.frequencyCalculator(createdAtList);
-
+		
 	}
 }
