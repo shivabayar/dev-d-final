@@ -24,18 +24,29 @@ public class AlertFilter {
 		CreatedAtList = new ArrayList<String>();
 
 		for (GitModel model : gitModel) {
+			System.out.println("Testmodel "+"\n\n\n\n\n"+model);
+			
 			CreatedAtList.add(model.getCreatedAt());
+			System.out.println("Test first "+"\n\n\n\n\n"+CreatedAtList);
 		}
+		
+		setCreatedAtList(CreatedAtList);
+		
 		int i = CreatedAtList.size()-1;
 		GitModel model = gitModel.get(i);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
 		a.setFrequentCommits(alert.isFrequentComits(CreatedAtList));
-
+		
 		return a;
 	}
 
+	public void setCreatedAtList(List<String> createdAtList) {
+		this.CreatedAtList = createdAtList;
+	}
+
 	public List<String> getCreatedAtList() {
+		System.out.println("Test "+"\n\n\n\n\n"+CreatedAtList);
 		return CreatedAtList;
 	}
 
