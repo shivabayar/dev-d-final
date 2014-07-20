@@ -1,9 +1,11 @@
 package com.hashedin.devd.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.hashedin.devd.model.GitUser;
 import com.hashedin.devd.repository.GitUserRepository;
 
@@ -41,6 +43,17 @@ public class GitUserServiceImpl implements GitUserService {
 	public GitUser delete(Long gitUserId) {
 		// Deletes the task with the give taskId and returns the same.
 		return gitUserRepository.delete(gitUserId);
+	}
+
+	@Override
+	public GitUser find(String email, String password) {
+		// TODO Auto-generated method stub
+		return gitUserRepository.find(email, password);
+	}
+
+	@Override
+	public GitUser find(String username) {
+		return gitUserRepository.find(username);
 	}
 
 }

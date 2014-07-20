@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.Alert;
+import com.hashedin.devd.model.GitModel;
 
 @Repository("alertRepository")
 @Service
@@ -20,9 +22,12 @@ public class AlertRepositoryImpl implements AlertRepository {
 	private EntityManager em;
 
 	@Override
-	public Alert find(Long userid) {
-		Alert val = em.find(Alert.class, userid);
-		return val;
+	public Alert find(String username) {
+		TypedQuery<Alert> query = em.createNamedQuery("Alert.find",
+				Alert.class).setParameter("username", username);
+		Alert results = query.getSingleResult();
+		return results;
+		
 	}
 
 	@Override
@@ -45,9 +50,23 @@ public class AlertRepositoryImpl implements AlertRepository {
 
 	@Override
 	@Transactional
-	public void save(Alert alert) {
-		em.persist(alert);
-		em.flush();
+	public void save(Alert alert, String userName) {
+		List<Alert> results = findAll();
+		boolean IsPresent=false;
+		for(Alert alrt:results){
+			if(alrt.getUserName() == userName && !IsPresent){
+				IsPresent=true;
+			}
+		}
+		if(!IsPresent){
+			em.persist(alert);
+			em.flush();
+		}
+		else {
+			delete(userName);
+			em.persist(alert);
+			em.flush();
+		}
 	}
 
 	@Override
@@ -56,9 +75,9 @@ public class AlertRepositoryImpl implements AlertRepository {
 	}
 
 	@Override
-	public Alert delete(Long alertId) {
-		Alert taskToBeDeleted = em.find(Alert.class, alertId);
-		em.remove(taskToBeDeleted);
-		return taskToBeDeleted;
+	public void delete(String userName) {
+		Query q = em.createQuery ("DELETE FROM Alert a WHERE a.userName= :userName");
+		q.setParameter ("userName", userName);
+		int deleted = q.executeUpdate ();
 	}
 }

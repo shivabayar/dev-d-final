@@ -12,9 +12,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "gitModel")
-@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u")})
-//@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where gitUserId =:userId")	
-//})
+@NamedQueries({ @NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u"),
+@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where userName =:username"),
+@NamedQuery(name = "GitModel.delete", query = "DELETE FROM GitModel m WHERE m.userName =:username")
+})
 public class GitModel {
 
 	@Id
@@ -25,8 +26,14 @@ public class GitModel {
 	private boolean pullAction;
 	private String createdAt;
 	private String eventType;
+	private String userName;
 	
-	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public long getUserId() {
 		return userId;
 	}

@@ -14,4 +14,7 @@ public interface GitUserRepository {
 	GitUser update(GitUser gitUser, Long gitUserId);
 
 	GitUser delete(Long gitUserId);
+	
+	GitUser find(String email, String password);
+	GitUser find(String username);
 }

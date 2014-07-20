@@ -28,12 +28,12 @@ public class CollectResource {
 	public void listAll() {
 		// Handles GET on /alerts. Lists all the alerts we have in our
 		// system.
-		collectRepository.collect();
+		//collectRepository.collect();
 	}
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Path("/{userId}")
+	@Path("/{userName}")
 
 /*	public void find(@PathParam("userId") Long userId){
 		
@@ -53,8 +53,10 @@ public class CollectResource {
 //	}
 }
 */
-	public List<GitModel> find(@PathParam("userId") Long userId){
-		return collectRepository.find(userId);
+	public List<GitModel> find(@PathParam("userName") String userName){
+		collectRepository.collect(userName);
+		//return collectRepository.find(userId);
+		return null;
 	}
 }
 

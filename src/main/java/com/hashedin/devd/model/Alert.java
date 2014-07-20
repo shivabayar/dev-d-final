@@ -12,7 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "alerts")
 
-@NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a") })
+@NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a"),
+	@NamedQuery(name = "Alert.find", query = "Select u from Alert u where userName =:username")	
+})
 //@NamedQuery(name = "Alert.find", query = "SELECT a FROM Alert a where gitUserId=:userid")})
 
 public class Alert {
@@ -26,6 +28,17 @@ public class Alert {
 	private int lastCommitedAt;
 	private String url;
 	private long gitUserId;
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public void setFrequentCommits(boolean isFrequentCommits) {
+		this.isFrequentCommits = isFrequentCommits;
+	}
 	@SuppressWarnings("unused")
 	private boolean FrequentCommits ;
 	

@@ -6,6 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +16,7 @@ import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitUser;
 
 @Service
-public class GitUserRepositoryImpl implements GitUserRepository {
+public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsService {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -37,6 +40,7 @@ public class GitUserRepositoryImpl implements GitUserRepository {
 	@Transactional
 	public GitUser save(GitUser gitUser) {
 		// Saves the given task object and returns the same.
+		System.out.println("user jhlygelhewldj"+gitUser);
 		em.persist(gitUser);
 		em.flush();
 		return gitUser;
@@ -53,6 +57,39 @@ public class GitUserRepositoryImpl implements GitUserRepository {
 		GitUser userToBeDeleted = em.find(GitUser.class, gitUserId);
 		em.remove(userToBeDeleted);
 		return userToBeDeleted;
+	}
+
+	@Override
+	public GitUser find(String email, String password) {
+		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.find",
+				GitUser.class).setParameter("email", email)
+				.setParameter("password", password);
+		GitUser results = query.getSingleResult();
+		return results;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findAll",
+				GitUser.class);
+		List<GitUser> results = query.getResultList();
+		for ( GitUser gitUser: results){
+			if(!username.equals(gitUser.getEmail())){
+	            throw new UsernameNotFoundException(username + " not found");
+	        }
+		}
+		
+		
+		return null;
+	}
+
+	@Override
+	public GitUser find(String username) {
+		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findUser",
+				GitUser.class).setParameter("username", username);
+		GitUser results = query.getSingleResult();
+		return results;
 	}
 
 }
