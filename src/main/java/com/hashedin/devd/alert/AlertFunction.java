@@ -16,7 +16,6 @@ public class AlertFunction implements AlertInterface {
 
 	@Override
 	public Boolean isFrequentComits(List<String> CreatedAtList) {
-	
 		int l = 0, preDiff = 0, count = 1, pre = 0;
 		float avg = 0;
 		try {

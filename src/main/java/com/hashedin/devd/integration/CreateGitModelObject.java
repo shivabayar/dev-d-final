@@ -26,33 +26,33 @@ public class CreateGitModelObject {
 			for (int i = 0; i < jArray.length(); i++) {
 				JSONObject jsonObj = jArray.getJSONObject(i);
 				String type = (String) jsonObj.get("type");
-				
+				int id=0;
+				String url= null;
 				GitModel gitModel = new GitModel();
+				
 				if (type.endsWith("PushEvent")
 						|| type.endsWith("PullRequestEvent")) {
 
 					String createdAt1 = (String) jsonObj.get("created_at");
-
 					gitModel.setCreatedAt(createdAt1);
 					gitModel.setEventType(type);
+					JSONObject jsonObj3 = jsonObj.getJSONObject("actor");
+					String url1 = (String) jsonObj3.get("url");
+					gitModel.setUserGitUrl(url1);
+					int type1 = (Integer) jsonObj3.get("id");
+					gitModel.setGitUserId(type1);
+					gitModel.setUserName(userName);
+				
 					if (type.endsWith("PullRequestEvent")) {
 						JSONObject jsonObj1 = jsonObj.getJSONObject("payload");
-						JSONObject jsonObj2 = jsonObj1
-								.getJSONObject("pull_request");
-						JSONObject jsonObj3 = jsonObj.getJSONObject("actor");
-						String url1 = (String) jsonObj3.get("url");
-						gitModel.setUserGitUrl(url1);
-						//	int type1 = (Integer) jsonObj3.get("id");
-						
-						// gitModel.setGitUserId(type1);
+						JSONObject jsonObj2 = jsonObj1.getJSONObject("pull_request");
 						Boolean merged = (Boolean) jsonObj2.get("merged");
 						gitModel.setPullAction(merged);
-
 					} else {
 						gitModel.setPullAction(true);
 					}
 				}
-				modelObjList.add(gitModel);
+			modelObjList.add(gitModel);
 				//System.out.println(gitModel);
 			}
 
@@ -63,5 +63,6 @@ public class CreateGitModelObject {
 		//
 		return modelObjList;
 	}
+
 
 }

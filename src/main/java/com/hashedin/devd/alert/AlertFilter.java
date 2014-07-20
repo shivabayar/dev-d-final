@@ -21,15 +21,25 @@ public class AlertFilter {
 		Alert a = new Alert();
 		AlertFunction alert = new AlertFunction();
 		CreatedAtList = new ArrayList<String>();
-
+		long tempId=0;
+		String url=null;
+		String name=null;
 		for (GitModel model : gitModel) {
 			CreatedAtList.add(model.getCreatedAt());
+			if(model.getGitUserId() != 0){
+				tempId=model.getGitUserId();
+				url=model.getUserGitUrl();
+				name=model.getUserName();
+			}
 		}
 		GitModel model = gitModel.get(1);
 		String createdAt = model.getCreatedAt();
 		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
 //		System.out.println("\n\n\n\n\n"+a.getLastCommitedAt());
 		a.setIsFrequentCommits(alert.isFrequentComits(CreatedAtList));
+		a.setGitUserId(tempId);
+		a.setUrl(url);
+		a.setUserName(name);
 		return a;
 	}
 

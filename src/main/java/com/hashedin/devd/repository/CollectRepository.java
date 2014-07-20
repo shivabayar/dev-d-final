@@ -10,8 +10,8 @@ public interface CollectRepository {
 
 	//List<Alert> findAll();
 	Alert save(Alert alert);
-	void collect();
-	void save(List<GitModel> gitModel);
-	List<GitModel> find(Long userId);
-
+	void collect(String useName);
+	void save(List<GitModel> gitModel ,String username);
+	List<GitModel> find(String username);
+	void delete(String username);
 }

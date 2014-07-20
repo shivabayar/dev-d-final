@@ -23,13 +23,13 @@ public class AlertServiceImpl implements AlertService {
 
 	@Override
 	public Alert save(Alert alert) {
-		alertRepository.save(alert);
+		//alertRepository.save(alert);
 		return alert;
 	}
 
 	@Override
 	public Alert find(long userid) {
-		alertRepository.find(userid);
+		//alertRepository.find(userid);
 		return null;
 	}
 

@@ -9,7 +9,7 @@ public interface AlertRepository {
 	List<Alert> findAll();
 	void save(List<Alert> alertList);
 	Alert update(Alert alert, Long alertId);
-	Alert delete(Long alertId);
-	Alert find(Long alertId);
-	void save(Alert alert);
+	void delete(String userName);
+	Alert find(String userName);
+	void save(Alert alert,String userName);
 }
