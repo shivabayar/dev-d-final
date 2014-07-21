@@ -64,12 +64,12 @@
 				<ul class="nav navbar-nav navbar-right user-nav">
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
-							alt="Avatar" src="images/avatar2.jpg" />Shivraj <b class="caret"></b></a>
+							alt="Avatar" src="images/avatar2.jpg" /><%= username %> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">My Account</a></li>
+							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
 							<li><a href="#">Messages</a></li>
-							<li class="divider"></li>
+							<li class="divider"></li> -->
 							<li><a href="#">Sign Out</a></li>
 						</ul></li>
 				</ul>
@@ -169,7 +169,7 @@
 
 						<div class="block-flat">
 							<div class="header">
-								<h3>Pull Requests</h3>
+								<h3>Pull Requests (Coming Soon...)</h3>
 							</div>
 							<!-- <div class="content">
 							<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>							
@@ -216,7 +216,7 @@
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'shivabayar'; // 
+      var USER_NAME = 'MasroorHamdani'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
