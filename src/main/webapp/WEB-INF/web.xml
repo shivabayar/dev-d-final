@@ -41,8 +41,7 @@
 		<param-value>
 	   	classpath:/jpaContext.xml
 	    classpath:/applicationContext-security.xml
-	   
-	   </param-value>
+ 	   </param-value>
 	</context-param>
 
 	<!-- Bootstraps the root web application context before servlet initialization -->

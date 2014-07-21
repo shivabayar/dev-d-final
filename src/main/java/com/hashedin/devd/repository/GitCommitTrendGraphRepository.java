@@ -1,9 +1,11 @@
 package com.hashedin.devd.repository;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GitCommitTrendGraphRepository {
 
-	int[] collectCommitGraph();
+
+	Map<String, Integer> collectCommitGraph();
 
 }

@@ -1,6 +1,7 @@
  package com.hashedin.devd.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
 import com.hashedin.devd.repository.CollectRepository;
 
@@ -53,10 +55,10 @@ public class CollectResource {
 //	}
 }
 */
-	public List<GitModel> find(@PathParam("userName") String userName){
+	public  void find(@PathParam("userName") String userName){
 		collectRepository.collect(userName);
 		//return collectRepository.find(userId);
-		return null;
+		//return null;
 	}
 }
 

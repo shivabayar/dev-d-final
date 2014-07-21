@@ -2,13 +2,16 @@ package com.hashedin.devd.repository;
 
 import com.hashedin.devd.display.DisplayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +26,8 @@ import com.hashedin.devd.model.GitModel;
 @Service
 public class CollectRepositoryImpl implements CollectRepository {
 
+	private static final Logger s_log = Logger.getLogger(CollectRepository.class);
+	
 	@PersistenceContext
 	private EntityManager em;
 
@@ -40,17 +45,23 @@ public class CollectRepositoryImpl implements CollectRepository {
 
 	@Override
 	@Transactional
-	public void collect(String userName) {
+	public void  collect(String userName) {
 		//function call to get username tanwanirahul
-
-		List<GitModel> listGitModel = createGitModelObject
-				.gitModelObject(userName);
-		Alert alertList = alertFilter.createFilter(listGitModel);
-
-		DisplayList displayList = new DisplayList();
-		displayList.displayFilter(listGitModel);
-		save(listGitModel,userName);
-		alertRepository.save(alertList,userName);
+		//DisplayList displayList = new DisplayList();
+		//Map<String,Object> displayMap= new HashMap<String,Object>();
+		try{
+			List<GitModel> listGitModel = createGitModelObject
+					.gitModelObject(userName);
+			Alert alertList = alertFilter.createFilter(listGitModel);
+			//displayList.displayFilter(listGitModel);
+			save(listGitModel,userName);
+			alertRepository.save(alertList,userName);
+			//displayMap.put("alert", alertRepository.find(userName));
+			//displayMap.put("graph", displayList.getDisplayList());
+		} catch(Exception ex){
+			s_log.error(ex);
+		}
+		//return displayMap;
 	}
 
 	@Override

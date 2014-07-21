@@ -1,5 +1,7 @@
 package com.hashedin.devd.rest;
 
+import java.util.Map;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,9 +21,12 @@ public class GitCommitTrendGraphResource {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public int[] listAll() {
+	public Map<String, Integer> listAll() {
 			// Handles GET on /alerts. Lists all the alerts we have in our
 			// system.
+		
+			System.out.println("in /gitgraph");
+		
 			return gitCommitTrendGraphRepository.collectCommitGraph();
 	}
 }

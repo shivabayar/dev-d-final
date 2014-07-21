@@ -28,7 +28,7 @@ public class GitUser {
 	private String apiKey;
 	private String userProfileUrl;
 	private String password;
-	private String gitUsername;
+	private String gitUserName;
 	
 	
 	public long getUserId() {
@@ -92,12 +92,12 @@ public class GitUser {
 
 
 	public String getGitUsername() {
-		return gitUsername;
+		return gitUserName;
 	}
 
 
 	public void setGitUsername(String gitUsername) {
-		this.gitUsername = gitUsername;
+		this.gitUserName = gitUsername;
 	}
 
 
@@ -106,6 +106,6 @@ public class GitUser {
 		return "GitUser [userId=" + userId + ", gitUserId=" + gitUserId
 				+ ", email=" + email + ", apiKey=" + apiKey
 				+ ", userProfileUrl=" + userProfileUrl + ", password="
-				+ password + ", gitUsername=" + gitUsername + "]";
+				+ password + ", gitUsername=" + gitUserName + "]";
 	}
 }

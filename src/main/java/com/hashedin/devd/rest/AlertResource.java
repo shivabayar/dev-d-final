@@ -53,8 +53,8 @@ public class AlertResource {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Path("/{userid}")
-	public Alert find(@PathParam("userid") Long userid) {
-		return alertService.find(userid);
+	@Path("/{username}")
+	public List<Alert> find(@PathParam("username") String username) {
+		return alertService.find(username);
 	}
 }

@@ -1,9 +1,9 @@
 package com.hashedin.devd.display;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DisplayInterface {
 
-	int[] frequencyCalculator(List<String> CreatedAtList);
 
 }

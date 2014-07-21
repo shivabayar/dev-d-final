@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -313,8 +314,12 @@
 	<script type="text/javascript"
 		src="js/jquery.gritter/js/jquery.gritter.js"></script>
 
+	<%
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+	%>
+
 	<script type="text/javascript">
-      var USER_NAME = '';
+      var USER_NAME = 'MasroorHamdani'; // <%= username %>
       $(document).ready(function(){
         //initialize the javascript
         App.init();

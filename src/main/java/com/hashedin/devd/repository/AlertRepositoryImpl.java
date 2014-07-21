@@ -22,10 +22,11 @@ public class AlertRepositoryImpl implements AlertRepository {
 	private EntityManager em;
 
 	@Override
-	public Alert find(String username) {
+	public List<Alert> find(String username) {
 		TypedQuery<Alert> query = em.createNamedQuery("Alert.find",
 				Alert.class).setParameter("username", username);
-		Alert results = query.getSingleResult();
+		//Alert results = query.getSingleResult();
+		List<Alert> results=query.getResultList();
 		return results;
 		
 	}
@@ -48,11 +49,12 @@ public class AlertRepositoryImpl implements AlertRepository {
 		}
 	}
 
+	
 	@Override
 	@Transactional
 	public void save(Alert alert, String userName) {
-		List<Alert> results = findAll();
-		boolean IsPresent=false;
+		List<Alert> results = find(userName);
+		/*boolean IsPresent=false;
 		for(Alert alrt:results){
 			if(alrt.getUserName() == userName && !IsPresent){
 				IsPresent=true;
@@ -66,7 +68,20 @@ public class AlertRepositoryImpl implements AlertRepository {
 			delete(userName);
 			em.persist(alert);
 			em.flush();
+		}*/
+		
+		if(results==null){
+			em.persist(alert);
+			em.flush();
 		}
+		else{
+			delete(userName);
+			em.persist(alert);
+			em.flush();
+		}
+		
+		
+		
 	}
 
 	@Override

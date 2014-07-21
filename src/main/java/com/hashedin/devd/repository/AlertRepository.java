@@ -10,6 +10,6 @@ public interface AlertRepository {
 	void save(List<Alert> alertList);
 	Alert update(Alert alert, Long alertId);
 	void delete(String userName);
-	Alert find(String userName);
+	List<Alert> find(String userName);
 	void save(Alert alert,String userName);
 }
