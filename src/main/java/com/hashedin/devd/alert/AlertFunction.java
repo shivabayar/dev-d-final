@@ -24,7 +24,7 @@ public class AlertFunction implements AlertInterface {
 
 				String createdAt = CreatedAtList.get(i);
 				l = (int) commitedAt.dayDifferenceCalculator(createdAt);
-				if (i > 1) {
+				if (i > 1&& l!=998800) {
 					preDiff = l - pre;
 					pre = l;
 					avg = preDiff / count;

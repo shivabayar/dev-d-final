@@ -22,6 +22,8 @@ public class CommitedAt {
 				d1 = df2.parse(resultString);
 				long diff = d2.getTime() - d1.getTime();
 				diffdays = diff / (24 * 60 * 60 * 1000);
+			}else{
+				diffdays= 998800;
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
