@@ -8,4 +8,6 @@ public interface GitCommitTrendGraphRepository {
 
 	Map<String, Integer> collectCommitGraph();
 
+	String collectCommitGraph(String userName);
+
 }

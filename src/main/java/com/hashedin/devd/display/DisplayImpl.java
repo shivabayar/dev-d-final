@@ -1,20 +1,20 @@
 package com.hashedin.devd.display;
 
-import java.util.List;
-import com.hashedin.devd.integration.CommitedAt;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.hashedin.devd.integration.CommitedAt;
 
 public class DisplayImpl implements DisplayInterface {
 
-
-	public Map<String, Integer> frequencyCalculator(List<String> CreatedAtList) {
+	@Override
+	public String frequencyCalculator(List<String> CreatedAtList) {
 		int l = 0;
 		CommitedAt commmitedAt = new CommitedAt();
 		String createdAt = "";
@@ -23,7 +23,7 @@ public class DisplayImpl implements DisplayInterface {
 			for (int i = 0; i < CreatedAtList.size(); ++i) {
 				createdAt = CreatedAtList.get(i);
 				l = (int) commmitedAt.dayDifferenceCalculator(createdAt);
-				if (l < 6 || l == 0) {
+				if (l < 7  && l != 998800) {
 					count[l] = ++count[l];
 				}
 			}
@@ -33,32 +33,28 @@ public class DisplayImpl implements DisplayInterface {
 		Calendar cal = Calendar.getInstance();
 		int day = cal.get(Calendar.DAY_OF_WEEK);
 		int currentIndex = day;
-		Map<String,Integer> weekMap = new HashMap<String, Integer>();
-		int data[]=new int[] {1,2,3,4,5,6,7 };
+		JSONObject weekMap = new JSONObject();
 		List<String> nameOfDay = new ArrayList<String>();
-		nameOfDay.add("sun");
-		nameOfDay.add("mon");
-		nameOfDay.add("tue");
-		nameOfDay.add("wed");
-		nameOfDay.add("thu");
-		nameOfDay.add("fri");
-		nameOfDay.add("sat");
-			
+		nameOfDay.add("zero");nameOfDay.add("one");nameOfDay.add("two");nameOfDay.add("three");
+		nameOfDay.add("four");nameOfDay.add("five");
+		nameOfDay.add("six");
 		do {
-		//	cal.add(Calendar.DATE, -1);
-			System.out.println("inside ");
-			weekMap.put(nameOfDay.get(currentIndex), count[currentIndex]);
-			currentIndex++;			
+			try {
+				weekMap.put(nameOfDay.get(currentIndex), count[currentIndex]);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			currentIndex++;
 			if (currentIndex > nameOfDay.size() - 1) {
-		
-				System.out.println("inside  if ");
-				
 				currentIndex = 0;
 			}
 		} while (currentIndex != day);
-
+	
 		System.out.println(weekMap);
-
-		return weekMap;
+	
+		return weekMap.toString();
+		
+		//return weekMap;
 	}
 }

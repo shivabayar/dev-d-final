@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.display.DisplayList;
+import com.hashedin.devd.integration.CreateGitModelObject;
+import com.hashedin.devd.model.GitModel;
 
 @Repository
 public class GitCommitTrendGraphRepositoryImpl implements GitCommitTrendGraphRepository {
@@ -21,4 +23,14 @@ public class GitCommitTrendGraphRepositoryImpl implements GitCommitTrendGraphRep
 	
 	}
 
+	//DisplayList displayList=new DisplayList();
+	@Override
+	public String collectCommitGraph(String userName) {  
+		CreateGitModelObject createGitModelObject =new CreateGitModelObject();
+		DisplayList displayList = new DisplayList();
+		//System.out.println("in to collectcommit graph"+ displayList.displayList());
+		List<GitModel> listGitModel = createGitModelObject.gitModelObject(userName);
+		displayList.displayFilter(listGitModel);
+		return displayList.displayFilter(listGitModel);
+	}
 }

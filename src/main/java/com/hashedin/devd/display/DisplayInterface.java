@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface DisplayInterface {
 
-
+	String frequencyCalculator(List<String> CreatedAtList);
 }

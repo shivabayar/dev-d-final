@@ -1,34 +1,34 @@
 package com.hashedin.devd.display;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.hashedin.devd.model.GitModel;
 
 public class DisplayList {
 
-	private Map<String, Integer> displayList; 
-	public void displayFilter(List<GitModel> gitModel) {
+	private String displayList;
+
+	public String displayList() {
+
+		System.out.println(" in displist" + displayList);
+		return displayList;
+	}
+
+	public String displayFilter(List<GitModel> gitModel) {
 		DisplayImpl display = new DisplayImpl();
-		displayList = new HashMap<String, Integer>();
+		displayList = new String();
 		List<String> createdAtList = new ArrayList<String>();
 		for (GitModel model : gitModel) {
 			createdAtList.add(model.getCreatedAt());
 		}
-		setDisplayList(display.frequencyCalculator(createdAtList));
-		//this.displayList = display.frequencyCalculator(createdAtList);
+
 		System.out.println("in disp filter" + displayList);
-	}
 
-	public Map<String, Integer> getDisplayList() {
-		System.out.println(" in displist" + displayList);
-		return this.displayList;
-	}
-
-	public void setDisplayList(Map<String, Integer> displayList) {
-		this.displayList = displayList;
+		return displayList = display.frequencyCalculator(createdAtList);
 	}
 }
