@@ -10,4 +10,4 @@ function loadDataActivity(url1){
   }});
 }
 
-loadDataActivity("activity.txt");
+loadDataActivity("/api/activitylog");
