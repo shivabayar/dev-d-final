@@ -55,16 +55,20 @@ public class CollectRepositoryImpl implements CollectRepository {
 	public void save(List<GitModel> gitModel, String userName) {
 		List<GitModel> results = find(userName);
 		if (results == null) {
+			
 			for (GitModel gitmodel : gitModel) {
 				em.persist(gitmodel);
 				em.flush();
 			}
+			delete();
 		} else {
+			
 			delete(userName);
 			for (GitModel gitmodel : gitModel) {
 				em.persist(gitmodel);
 				em.flush();
 			}
+			delete();
 		}
 	}
 
@@ -83,6 +87,14 @@ public class CollectRepositoryImpl implements CollectRepository {
 		Query q = em
 				.createQuery("DELETE FROM GitModel s WHERE s.userName= :userName");
 		q.setParameter("userName", username);
+		int deleted = q.executeUpdate();
+
+	}
+	@Override
+	@Transactional
+	public void delete() {
+		Query q = em
+				.createQuery("DELETE FROM GitModel s WHERE s.gitUserId= 0");
 		int deleted = q.executeUpdate();
 
 	}

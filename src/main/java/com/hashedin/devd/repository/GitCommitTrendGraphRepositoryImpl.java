@@ -1,8 +1,7 @@
-package com.hashedin.devd.repository;
+ package com.hashedin.devd.repository;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.display.DisplayList;
@@ -13,7 +12,7 @@ import com.hashedin.devd.model.GitModel;
 public class GitCommitTrendGraphRepositoryImpl implements
 		GitCommitTrendGraphRepository {
 
-	DisplayList displayList = new DisplayList();
+	DisplayList displayTrendGraph = new DisplayList();
 
 	@Override
 	public Map<String, Integer> collectCommitGraph() {
@@ -22,20 +21,21 @@ public class GitCommitTrendGraphRepositoryImpl implements
 
 	@Override
 	public String collectCommitGraph(String userName) {
-		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
-		DisplayList displayCommitTrendGraph = new DisplayList();
-		List<GitModel> listGitModel = createGitModelObject
-				.gitModelObject(userName);
-		return displayCommitTrendGraph
-				.displayCommitTrendGraphFilter(listGitModel);
+		return displayTrendGraph
+				.displayCommitTrendGraphFilter(listGitModel(userName));
 	}
 
 	@Override
 	public String pushCommitGraph(String userName) {
+		return displayTrendGraph.displayPullGraphFilter(listGitModel(userName));
+	}
+
+	public List<GitModel> listGitModel(String userName) {
 		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
-		DisplayList displayPullGraph = new DisplayList();
 		List<GitModel> listGitModel = createGitModelObject
 				.gitModelObject(userName);
-		return displayPullGraph.displayPullGraphFilter(listGitModel);
+		return listGitModel;
+
 	}
+
 }

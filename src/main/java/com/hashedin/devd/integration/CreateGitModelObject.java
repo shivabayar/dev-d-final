@@ -24,8 +24,11 @@ public class CreateGitModelObject {
 				JSONObject jsonObj = jArray.getJSONObject(count);
 				String eventType = (String) jsonObj.get("type");
 				GitModel gitModel = new GitModel();
-				if (eventType.endsWith("PushEvent")
-						|| eventType.endsWith("PullRequestEvent")) {
+				type=(Integer)(jsonObj.getJSONObject("actor").get("id"));
+				if ((eventType.endsWith("PushEvent")
+						|| eventType.endsWith("PullRequestEvent")) 
+						//&&  (type!=0)) {
+						){
 					String createdAt = (String) jsonObj.get("created_at");
 					gitModel.setCreatedAt(createdAt);
 					gitModel.setEventType(eventType);
@@ -33,6 +36,8 @@ public class CreateGitModelObject {
 					String url = (String) jsonObj3.get("url");
 					gitModel.setUserGitUrl(url);
 					type = (Integer) jsonObj3.get("id");
+					//System.out.println("type id "+eventType);
+					//System.out.println("created at id "+createdAt);
 					gitModel.setGitUserId(type);
 					gitModel.setUserName(userName);
 					if (eventType.endsWith("PullRequestEvent")) {
@@ -47,15 +52,18 @@ public class CreateGitModelObject {
 						gitModel.setPullAction(true);
 					}
 				}
-				if(type != 0){
-					System.out.println("defdf"+type);
+				//System.out.println("outside"+type);
+				//if(type != 0){
+				//	System.out.println("inside"+type);
+				//	System.out.println("inside"+gitModel);
 					modelObjList.add(gitModel);
-				}
+				//}
 			}
 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		//System.out.println("datamodel"+modelObjList);
 		return modelObjList;
 	}
 }
