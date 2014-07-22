@@ -14,11 +14,11 @@ angular.module('myApp', [
 //  $locationProvider.html5Mode(true);
   $routeProvider.
   	when('/view1', {
-  		templateUrl: '/SpringJPAJerseyTemplate/assets/partials/view1.html', 
+  		templateUrl: '/assets/partials/view1.html', 
   		controller: 'View1Cntrl'
   			})
   	.when('/partials/:projectId', {
-  	    templateUrl: '/SpringJPAJerseyTemplate/assets/partials/view2.html',
+  	    templateUrl: '/assets/partials/view2.html',
   	    controller: 'MyCtrl2'
   	})
   	.
