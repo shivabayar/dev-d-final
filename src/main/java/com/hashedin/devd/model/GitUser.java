@@ -12,11 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "gitUsers")
 @NamedQueries({
-		@NamedQuery(name = "GitUser.findAll", query = "SELECT u FROM GitUser u"),
-		@NamedQuery(name = "GitUser.find", query = "SELECT u FROM GitUser u where email=:email "
-				+ "and password=:password"),
-		@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
-				+ "gitUserName=:username") })
+		@NamedQuery(name = "GitUser.findAll", query = "SELECT u FROM GitUser u")})
+//		@NamedQuery(name = "GitUser.find", query = "SELECT u FROM GitUser u where email=:email "
+//				+ "and password=:password"),
+//		@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
+//				+ "gitUserName=:username") })
 public class GitUser {
 
 	@Id

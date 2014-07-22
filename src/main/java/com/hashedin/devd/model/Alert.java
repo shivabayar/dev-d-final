@@ -12,8 +12,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "alerts")
 @NamedQueries({
-		@NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a"),
-		@NamedQuery(name = "Alert.find", query = "Select u from Alert u where userName =:username") })
+		@NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a")})
+//		@NamedQuery(name = "Alert.find", query = "Select u from Alert u where u.username =:username") })
 // @NamedQuery(name = "Alert.find", query =
 // "SELECT a FROM Alert a where gitUserId=:userid")})
 public class Alert {

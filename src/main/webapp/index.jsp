@@ -64,7 +64,7 @@
 				<ul class="nav navbar-nav navbar-right user-nav">
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
-							alt="Avatar" src="images/avatar2.jpg" /><%= username %> <b class="caret"></b></a>
+							alt="Avatar" src="" /><%= username %> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
@@ -94,7 +94,7 @@
 					<div class="content">
 						<div class="side-user">
 							<div class="avatar">
-								<img src="images/avatar1_50.jpg" alt="Avatar" />
+								<img src="" alt="Avatar" />
 							</div>
 							<div class="info">
 								<a href="#"><%= username %></a> 
@@ -131,17 +131,10 @@
 		</div>
 
 		<div class="container-fluid" id="pcont">
-			<div class="page-head">
-				<h2>Charts</h2>
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Charts</a></li>
-					<li class="active">General</li>
-				</ol>
-			</div>
+			
 			<div class="cl-mcont">
 				<div class="row">
-					<div class="col-sm-6 col-md-6">
+					<div class="col-sm-12 col-md-12">
 						<div class="block-flat">
 							<div class="header">
 								<h3>Git Commit Trend (days ago)</h3>
@@ -152,20 +145,10 @@
 							<div id="commit_trend" style="width: 450px; height: 300px;"></div>
 						</div>
 
-						<div class="block-flat">
-							<div class="header">
-								<h3>JIRA Task Status  (Coming Soon...)</h3>
-							</div>
-							<!-- <div class="content overflow-hidden">
-							<div id="piec" style="height: 300px; padding: 0px; position: relative;">
-							</div>
-						</div> -->
-							<div id="jira_status_pie_chart"
-								style="width: 450px; height: 300px;"></div>
-						</div>
+						
 					</div>
 
-					<div class="col-sm-6 col-md-6">
+					<div class="col-sm-12 col-md-12">
 
 						<div class="block-flat">
 							<div class="header">
@@ -174,19 +157,11 @@
 							<!-- <div class="content">
 							<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>							
 						</div> -->
-							<div id="pull_trend" style="width: 450px; height: 300px;"></div>
+							<div id="pull_trend" style="width: 450px; height: 300px;">
+							</div>
 						</div>
 
-						<div class="block-flat">
-							<div class="header">
-								<h3>Work Burn-down chart (Coming Soon)</h3>
-							</div>
-							<!-- <div class="content full-width">
-							<div id="chart3-legend" class="legend-container"></div>
-							<div id="chart3" style="height: 260px;"></div>							
-						</div> -->
-							<div id="work_burndown" style="width: 450px; height: 300px;"></div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -216,7 +191,7 @@
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'MasroorHamdani'; // 
+      var USER_NAME = 'shivabayar'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
