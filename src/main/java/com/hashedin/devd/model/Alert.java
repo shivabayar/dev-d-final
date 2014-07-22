@@ -11,11 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name = "alerts")
-@NamedQueries({
-		@NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a"),
-		@NamedQuery(name = "Alert.find", query = "Select u from Alert u where userName =:username") })
-// @NamedQuery(name = "Alert.find", query =
-// "SELECT a FROM Alert a where gitUserId=:userid")})
+@NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a")})
 public class Alert {
 
 	@Id
@@ -37,13 +33,6 @@ public class Alert {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	public void setFrequentCommits(boolean isFrequentCommits) {
-		this.isFrequentCommits = isFrequentCommits;
-	}
-
-	@SuppressWarnings("unused")
-	private boolean FrequentCommits;
 
 	public long getAlertId() {
 		return alertId;
@@ -93,6 +82,11 @@ public class Alert {
 		this.url = url;
 	}
 
+	
+	public void setFrequentCommits(boolean frequentCommits) {
+		this.isFrequentCommits = frequentCommits;
+	}
+
 	public long getGitUserId() {
 		return gitUserId;
 	}
@@ -100,5 +94,5 @@ public class Alert {
 	public void setGitUserId(long gitUserId) {
 		this.gitUserId = gitUserId;
 	}
-
 }
+

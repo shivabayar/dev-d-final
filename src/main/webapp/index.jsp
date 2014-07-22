@@ -9,8 +9,17 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="images/favicon.png">
 <%
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-	%>
+String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
+	
+%>
+	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+if (principal instanceof UserDetails) {
+  String username = ((UserDetails)principal).getUsername();
+} else {
+  String username = principal.toString();
+}
+
 <title>Dev-D</title>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800'
@@ -85,7 +94,10 @@
 	</div>
 
 	<div id="cl-wrapper">
-		<div class="cl-sidebar"> 
+		<div class="cl-sidebar">
+			<div class="cl-toggle">
+				<i class="fa fa-bars"></i>
+			</div>
 			<div class="cl-navblock">
 				<div class="menu-space">
 					<div class="content">
@@ -118,31 +130,71 @@
 						</div>
 					</div>
 				</div>
+				<div class="text-right collapse-button" style="padding: 7px 9px;">
+					
+					<button id="sidebar-collapse" class="btn btn-default" style="">
+						<i style="color: #fff;" class="fa fa-angle-left"></i>
+					</button>
+				</div>
 			</div>
 		</div>
 
 		<div class="container-fluid" id="pcont">
 			<div class="page-head">
 				<h2>Charts</h2>
-				
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Charts</a></li>
+					<li class="active">General</li>
+				</ol>
 			</div>
 			<div class="cl-mcont">
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
-						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
+						<div class="block-flat">
 							<div class="header">
 								<h3>Git Commit Trend (days ago)</h3>
 							</div>
-							
-							<div id="commit_trend" ></div>
+							<!-- <div class="content">
+							<div id="site_statistics" style="height: 180px; padding: 0px; position: relative;"></div>
+						</div> -->
+							<div id="commit_trend" style="width: 450px; height: 300px;"></div>
 						</div>
 
-						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
+						<div class="block-flat">
+							<div class="header">
+								<h3>JIRA Task Status  (Coming Soon...)</h3>
+							</div>
+							<!-- <div class="content overflow-hidden">
+							<div id="piec" style="height: 300px; padding: 0px; position: relative;">
+							</div>
+						</div> -->
+							<div id="jira_status_pie_chart"
+								style="width: 450px; height: 300px;"></div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6">
+
+						<div class="block-flat">
 							<div class="header">
 								<h3>Pull Requests (Coming Soon...)</h3>
 							</div>
-							
-							<div id="pull_trend" ></div>
+							<!-- <div class="content">
+							<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>							
+						</div> -->
+							<div id="pull_trend" style="width: 450px; height: 300px;"></div>
+						</div>
+
+						<div class="block-flat">
+							<div class="header">
+								<h3>Work Burn-down chart (Coming Soon)</h3>
+							</div>
+							<!-- <div class="content full-width">
+							<div id="chart3-legend" class="legend-container"></div>
+							<div id="chart3" style="height: 260px;"></div>							
+						</div> -->
+							<div id="work_burndown" style="width: 450px; height: 300px;"></div>
 						</div>
 					</div>
 				</div>
@@ -173,7 +225,7 @@
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'MasroorHamdani'; // 
+      var USER_NAME = 'anuragjain67'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
