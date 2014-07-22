@@ -1,5 +1,7 @@
 package com.hashedin.devd.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @XmlRootElement
 @Entity
@@ -17,7 +23,7 @@ import javax.persistence.Table;
 				+ "and password=:password"),
 		@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
 				+ "gitUserName=:username") })
-public class GitUser {
+public class GitUser implements UserDetails {
 
 	@Id
 	@GeneratedValue
@@ -92,5 +98,41 @@ public class GitUser {
 				+ ", email=" + email + ", apiKey=" + apiKey
 				+ ", userProfileUrl=" + userProfileUrl + ", password="
 				+ password + ", gitUsername=" + gitUserName + "]";
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		//return new GrantedAuthority[]{ new GrantedAuthorityImpl("ROLE_USER") };
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		
+		return getUsername();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

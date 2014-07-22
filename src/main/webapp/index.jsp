@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page
 	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <html lang="en">
@@ -9,8 +10,17 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="images/favicon.png">
 <%
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-	%>
+//String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
+	
+String username;
+	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+if (principal instanceof UserDetails) {
+  username = ((UserDetails)principal).getUsername();
+} else {
+  username = principal.toString();
+}%>
+
 <title>Dev-D</title>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800'
@@ -216,7 +226,7 @@
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'MasroorHamdani'; // 
+      var USER_NAME = 'anuragjain67'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();

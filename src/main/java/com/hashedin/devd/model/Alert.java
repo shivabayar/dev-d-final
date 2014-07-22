@@ -42,9 +42,6 @@ public class Alert {
 		this.isFrequentCommits = isFrequentCommits;
 	}
 
-	@SuppressWarnings("unused")
-	private boolean FrequentCommits;
-
 	public long getAlertId() {
 		return alertId;
 	}
