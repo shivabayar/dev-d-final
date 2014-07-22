@@ -85,7 +85,7 @@
 	</div>
 
 	<div id="cl-wrapper">
-		<div class="cl-sidebar"> <!--style="width: 450px;" >-->
+		<div class="cl-sidebar"> 
 			<div class="cl-navblock">
 				<div class="menu-space">
 					<div class="content">
