@@ -85,9 +85,9 @@
 	</div>
 
 	<div id="cl-wrapper">
-		<div class="cl-sidebar">
+		<div class="cl-sidebar" style="width: 450px;" >
 			<div class="cl-toggle">
-				<i class="fa fa-bars"></i>
+				
 			</div>
 			<div class="cl-navblock">
 				<div class="menu-space">
@@ -133,59 +133,25 @@
 		<div class="container-fluid" id="pcont">
 			<div class="page-head">
 				<h2>Charts</h2>
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Charts</a></li>
-					<li class="active">General</li>
-				</ol>
+				
 			</div>
 			<div class="cl-mcont">
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
-						<div class="block-flat">
+						<div class="block-flat" style="width: 450px; height: 300px;">
 							<div class="header">
 								<h3>Git Commit Trend (days ago)</h3>
 							</div>
-							<!-- <div class="content">
-							<div id="site_statistics" style="height: 180px; padding: 0px; position: relative;"></div>
-						</div> -->
-							<div id="commit_trend" style="width: 450px; height: 300px;"></div>
+							
+							<div id="commit_trend" ></div>
 						</div>
 
-						<div class="block-flat">
-							<div class="header">
-								<h3>JIRA Task Status  (Coming Soon...)</h3>
-							</div>
-							<!-- <div class="content overflow-hidden">
-							<div id="piec" style="height: 300px; padding: 0px; position: relative;">
-							</div>
-						</div> -->
-							<div id="jira_status_pie_chart"
-								style="width: 450px; height: 300px;"></div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 col-md-6">
-
-						<div class="block-flat">
+						<div class="block-flat" style="width: 450px; height: 300px;">
 							<div class="header">
 								<h3>Pull Requests (Coming Soon...)</h3>
 							</div>
-							<!-- <div class="content">
-							<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>							
-						</div> -->
-							<div id="pull_trend" style="width: 450px; height: 300px;"></div>
-						</div>
-
-						<div class="block-flat">
-							<div class="header">
-								<h3>Work Burn-down chart (Coming Soon)</h3>
-							</div>
-							<!-- <div class="content full-width">
-							<div id="chart3-legend" class="legend-container"></div>
-							<div id="chart3" style="height: 260px;"></div>							
-						</div> -->
-							<div id="work_burndown" style="width: 450px; height: 300px;"></div>
+							
+							<div id="pull_trend" ></div>
 						</div>
 					</div>
 				</div>
