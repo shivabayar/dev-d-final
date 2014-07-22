@@ -37,4 +37,4 @@ function loadDataAlerts(url1) {
 
 }
 
-loadDataAlerts("api/alerts/" + USER_NAME);
+loadDataAlerts("/api/alerts/" + USER_NAME);

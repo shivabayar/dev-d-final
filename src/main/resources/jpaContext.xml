@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <context:annotation-config/>
+    <context:annotation-config />
     <context:component-scan base-package="com.hashedin"/>
     
     <!--  This bean tells the spring to support context bean annotation. -->
@@ -44,5 +44,6 @@
         <property name="username" value="root"/>
         <property name="password" value="hasher123"/>
     </bean>
-	
+    
+	 <bean id="userDetailService" class="com.hashedin.devd.service.UserDetailServiceImpl"></bean>
 </beans>

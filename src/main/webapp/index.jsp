@@ -226,11 +226,11 @@ if (principal instanceof UserDetails) {
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'anuragjain67'; // 
+      var USER_NAME = '<%= username %>'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
-        App.charts();
+      //  App.charts();
       });
     </script>
 	<!-- Bootstrap core JavaScript
@@ -245,6 +245,7 @@ if (principal instanceof UserDetails) {
 	<script type="text/javascript"
 		src="js/jquery.flot/jquery.flot.labels.js"></script>
 	<!-- google charts -->
+	<script type="text/javascript" src="js/ajax/collects_data.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="js/ajax/jira_status_pie_chart.js"></script>
 	<script type="text/javascript" src="js/ajax/commit_trend.js"></script>

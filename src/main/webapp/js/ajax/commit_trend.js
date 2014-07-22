@@ -4,7 +4,7 @@ google.load("visualization", "1", {
 google.setOnLoadCallback(drawChart);
 function drawChart() {
 	$.ajax({
-		url : "api/gitcommittrendgraph/" + USER_NAME,
+		url : "/api/gitcommittrendgraph/" + USER_NAME,
 		headers : {
 			'ACCEPT' : 'application/json'
 		},

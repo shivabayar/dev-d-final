@@ -7,15 +7,13 @@
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-
-
 <global-method-security secured-annotations="enabled">
 </global-method-security>
 
 <http auto-config="true"  access-denied-page="/auth/denied">
 	<intercept-url pattern="/api/user/**" access="ROLE_ADMIN"/>
 	<intercept-url pattern="/**" access="ROLE_ADMIN" />
-	<form-login default-target-url="/index.jsp/api/collects/MasroorHamdani"/>
+<!-- 	<form-login default-target-url="/index.jsp/api/collects/MasroorHamdani"/> -->
 <!-- 	<form-login login-page="/login.jsp" default-target-url="/index.jsp" /> -->
 <!--     <logout logout-success-url="/logout" /> -->
     
@@ -27,8 +25,9 @@
          </user-service>
     </authentication-provider>
 </authentication-manager> -->
- <authentication-manager>
-        <authentication-provider ref="userDetailService" />
+ <authentication-manager  alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailService">
+        </authentication-provider>
     </authentication-manager>
 
 </beans:beans>

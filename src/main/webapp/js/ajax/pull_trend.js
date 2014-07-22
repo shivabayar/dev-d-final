@@ -4,7 +4,7 @@ google.load("visualization", "1", {
 google.setOnLoadCallback(drawChart);
 function drawChart() {
 	$.ajax({
-		url : "api/pullGraph/" + USER_NAME,
+		url : "/api/pullGraph/" + USER_NAME,
 		headers : {
 			'ACCEPT' : 'application/json'
 		},

@@ -1,5 +1,6 @@
 package com.hashedin.devd.model;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -102,14 +103,14 @@ public class GitUser implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//return new GrantedAuthority[]{ new GrantedAuthorityImpl("ROLE_USER") };
-		return null;
+		return Arrays.asList(new GrantedAuthorityImpl("ROLE_ADMIN"));
+		//return null;
 	}
 
 	@Override
 	public String getUsername() {
 		
-		return getUsername();
+		return getGitUsername();
 	}
 
 	@Override
