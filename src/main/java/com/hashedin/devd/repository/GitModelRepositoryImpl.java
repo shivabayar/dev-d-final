@@ -7,8 +7,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 import com.hashedin.devd.model.GitModel;
 
-
-
 public class GitModelRepositoryImpl implements GitModelRepository {
 
 	@PersistenceContext
@@ -17,11 +15,9 @@ public class GitModelRepositoryImpl implements GitModelRepository {
 	@Override
 	@Transactional
 	public void save(List<GitModel> gitModel) {
-	
-		for( GitModel gitmodel : gitModel){
+		for (GitModel gitmodel : gitModel) {
 			em.persist(gitmodel);
 			em.flush();
 		}
 	}
-	
 }

@@ -22,13 +22,12 @@ import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.service.AlertService;
 
 @Component
-
 @Path("/alerts")
 public class AlertResource {
 
 	@Autowired
 	private AlertService alertService;
-	
+
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Alert> listAll() {
@@ -36,7 +35,7 @@ public class AlertResource {
 		// system.
 		return alertService.findAll();
 	}
-	
+
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -50,7 +49,7 @@ public class AlertResource {
 		return Response.created(new URI("/alerts/" + alert.getAlertId()))
 				.build();
 	}
-	
+
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{username}")

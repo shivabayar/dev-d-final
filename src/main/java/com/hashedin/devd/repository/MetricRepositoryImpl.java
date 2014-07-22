@@ -11,20 +11,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.GitMetric;
 
-
 @Repository("metricRepository")
 public class MetricRepositoryImpl implements MetricRepository {
 
 	@PersistenceContext
 	private EntityManager em;
+
 	@Override
 	public List<GitMetric> findAll() {
 		// Returns all the metrics in our system.
-				TypedQuery<GitMetric> query = em.createNamedQuery("GitMetric.findAll",
-						GitMetric.class);
-				List<GitMetric> results = query.getResultList();
-				return results;
+		TypedQuery<GitMetric> query = em.createNamedQuery("GitMetric.findAll",
+				GitMetric.class);
+		List<GitMetric> results = query.getResultList();
+		return results;
 	}
+
 	@Override
 	@Transactional
 	public GitMetric save(GitMetric metric) {

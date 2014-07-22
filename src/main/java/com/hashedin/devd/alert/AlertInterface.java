@@ -7,5 +7,4 @@ public interface AlertInterface {
 	int lastCommitedAt(String createdAt);
 
 	Boolean isFrequentComits(List<String> CreatedAtList);
-
 }

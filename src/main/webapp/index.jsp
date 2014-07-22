@@ -144,7 +144,7 @@
 					<div class="col-sm-6 col-md-6">
 						<div class="block-flat">
 							<div class="header">
-								<h3>Git Commit Trend</h3>
+								<h3>Git Commit Trend (days ago)</h3>
 							</div>
 							<!-- <div class="content">
 							<div id="site_statistics" style="height: 180px; padding: 0px; position: relative;"></div>
@@ -174,7 +174,7 @@
 							<!-- <div class="content">
 							<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>							
 						</div> -->
-							<div id="pull_request" style="width: 450px; height: 300px;"></div>
+							<div id="pull_trend" style="width: 450px; height: 300px;"></div>
 						</div>
 
 						<div class="block-flat">
@@ -216,7 +216,7 @@
 	
 
 	<script type="text/javascript">
-      var USER_NAME = 'tanwanirahul'; // 
+      var USER_NAME = 'MasroorHamdani'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
@@ -239,7 +239,7 @@
 	<script type="text/javascript" src="js/ajax/jira_status_pie_chart.js"></script>
 	<script type="text/javascript" src="js/ajax/commit_trend.js"></script>
 	<script type="text/javascript" src="js/ajax/work_burndown.js"></script>
-	<script type="text/javascript" src="js/ajax/pull_request.js"></script>
+	<script type="text/javascript" src="js/ajax/pull_trend.js"></script>
 	<!-- ajax calls -->
 	<script type="text/javascript" src="js/ajax/get_commit_trend_data.js"></script>
 	<script type="text/javascript" src="js/ajax/get_activity_data.js"></script>

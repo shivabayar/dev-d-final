@@ -16,7 +16,8 @@ import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitUser;
 
 @Service
-public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsService {
+public class GitUserRepositoryImpl implements GitUserRepository,
+		UserDetailsService {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -40,7 +41,7 @@ public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsSer
 	@Transactional
 	public GitUser save(GitUser gitUser) {
 		// Saves the given task object and returns the same.
-		System.out.println("user jhlygelhewldj"+gitUser);
+		System.out.println("user jhlygelhewldj" + gitUser);
 		em.persist(gitUser);
 		em.flush();
 		return gitUser;
@@ -61,8 +62,9 @@ public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsSer
 
 	@Override
 	public GitUser find(String email, String password) {
-		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.find",
-				GitUser.class).setParameter("email", email)
+		TypedQuery<GitUser> query = em
+				.createNamedQuery("GitUser.find", GitUser.class)
+				.setParameter("email", email)
 				.setParameter("password", password);
 		GitUser results = query.getSingleResult();
 		return results;
@@ -74,13 +76,11 @@ public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsSer
 		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findAll",
 				GitUser.class);
 		List<GitUser> results = query.getResultList();
-		for ( GitUser gitUser: results){
-			if(!username.equals(gitUser.getEmail())){
-	            throw new UsernameNotFoundException(username + " not found");
-	        }
+		for (GitUser gitUser : results) {
+			if (!username.equals(gitUser.getEmail())) {
+				throw new UsernameNotFoundException(username + " not found");
+			}
 		}
-		
-		
 		return null;
 	}
 
@@ -91,5 +91,4 @@ public class GitUserRepositoryImpl implements GitUserRepository , UserDetailsSer
 		GitUser results = query.getSingleResult();
 		return results;
 	}
-
 }

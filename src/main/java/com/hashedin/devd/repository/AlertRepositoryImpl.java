@@ -23,17 +23,16 @@ public class AlertRepositoryImpl implements AlertRepository {
 
 	@Override
 	public List<Alert> find(String username) {
-		TypedQuery<Alert> query = em.createNamedQuery("Alert.find",
-				Alert.class).setParameter("username", username);
-		//Alert results = query.getSingleResult();
-		List<Alert> results=query.getResultList();
+		TypedQuery<Alert> query = em
+				.createNamedQuery("Alert.find", Alert.class).setParameter(
+						"username", username);
+		List<Alert> results = query.getResultList();
 		return results;
-		
 	}
 
 	@Override
 	public List<Alert> findAll() {
-		
+
 		TypedQuery<Alert> query = em.createNamedQuery("Alert.findAll",
 				Alert.class);
 		List<Alert> results = query.getResultList();
@@ -49,39 +48,18 @@ public class AlertRepositoryImpl implements AlertRepository {
 		}
 	}
 
-	
 	@Override
 	@Transactional
 	public void save(Alert alert, String userName) {
 		List<Alert> results = find(userName);
-		/*boolean IsPresent=false;
-		for(Alert alrt:results){
-			if(alrt.getUserName() == userName && !IsPresent){
-				IsPresent=true;
-			}
-		}
-		if(!IsPresent){
+		if (results == null) {
 			em.persist(alert);
 			em.flush();
-		}
-		else {
-			delete(userName);
-			em.persist(alert);
-			em.flush();
-		}*/
-		
-		if(results==null){
-			em.persist(alert);
-			em.flush();
-		}
-		else{
+		} else {
 			delete(userName);
 			em.persist(alert);
 			em.flush();
 		}
-		
-		
-		
 	}
 
 	@Override
@@ -91,8 +69,9 @@ public class AlertRepositoryImpl implements AlertRepository {
 
 	@Override
 	public void delete(String userName) {
-		Query q = em.createQuery ("DELETE FROM Alert a WHERE a.userName= :userName");
-		q.setParameter ("userName", userName);
-		int deleted = q.executeUpdate ();
+		Query q = em
+				.createQuery("DELETE FROM Alert a WHERE a.userName= :userName");
+		q.setParameter("userName", userName);
+		int deleted = q.executeUpdate();
 	}
 }

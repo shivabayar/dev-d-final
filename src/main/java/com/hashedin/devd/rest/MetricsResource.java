@@ -34,7 +34,7 @@ public class MetricsResource {
 		// system.
 		return metricService.findAll();
 	}
-	
+
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

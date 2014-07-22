@@ -24,11 +24,10 @@ import com.hashedin.devd.service.GitUserService;
 //@Required
 @Component
 @Path("/user")
-
 public class GitUserResource {
 	@Autowired
 	private GitUserService gitUserService;
-	
+
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<GitUser> listAll() {
@@ -36,7 +35,7 @@ public class GitUserResource {
 		// system.
 		return gitUserService.findAll();
 	}
-	
+
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{username}")
@@ -45,7 +44,7 @@ public class GitUserResource {
 		// system.
 		return gitUserService.find(username);
 	}
-	
+
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
@@ -56,8 +55,7 @@ public class GitUserResource {
 		// repository.
 		gitUserService.save(user);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/user/" + user.getUserId()))
-				.build();
+		return Response.created(new URI("/user/" + user.getUserId())).build();
 	}
 
 }

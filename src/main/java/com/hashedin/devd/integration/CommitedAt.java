@@ -9,7 +9,7 @@ public class CommitedAt {
 
 	public long dayDifferenceCalculator(String createdAt) {
 
-		long diffdays = 0;
+		long dateDiffInDays = 0;
 		try {
 			if (createdAt != null) {
 				createdAt = createdAt.replace('T', ' ');
@@ -17,18 +17,17 @@ public class CommitedAt {
 				sb.deleteCharAt(19);
 				String resultString = sb.toString();
 				DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				Date d2 = new Date();
-				Date d1 = null;
-				d1 = df2.parse(resultString);
-				long diff = d2.getTime() - d1.getTime();
-				diffdays = diff / (24 * 60 * 60 * 1000);
-			}else{
-				diffdays= 998800;
+				Date nextDay = new Date();
+				Date previousDay = null;
+				previousDay = df2.parse(resultString);
+				long dateDiff = nextDay.getTime() - previousDay.getTime();
+				dateDiffInDays = dateDiff / (24 * 60 * 60 * 1000);
+			} else {
+				dateDiffInDays = 998800;
 			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return diffdays;
+		return dateDiffInDays;
 	}
 }

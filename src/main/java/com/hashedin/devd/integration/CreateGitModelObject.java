@@ -14,55 +14,48 @@ public class CreateGitModelObject {
 
 	public List<GitModel> gitModelObject(String userName) {
 		JavaUrlConnectionReader realData = new JavaUrlConnectionReader();
-
 		String output = realData.getUrlContents(userName);
-
 		List<GitModel> modelObjList = new ArrayList<GitModel>();
-		// GitModel gitModel = new GitModel();
 		JSONArray jArray;
 		try {
+			int type=0;
 			jArray = new JSONArray(output);
-
-			for (int i = 0; i < jArray.length(); i++) {
-				JSONObject jsonObj = jArray.getJSONObject(i);
-				String type = (String) jsonObj.get("type");
-				int id=0;
-				String url= null;
+			for (int count = 0; count < jArray.length(); count++) {
+				JSONObject jsonObj = jArray.getJSONObject(count);
+				String eventType = (String) jsonObj.get("type");
 				GitModel gitModel = new GitModel();
-				
-				if (type.endsWith("PushEvent")
-						|| type.endsWith("PullRequestEvent")) {
-
-					String createdAt1 = (String) jsonObj.get("created_at");
-					gitModel.setCreatedAt(createdAt1);
-					gitModel.setEventType(type);
+				if (eventType.endsWith("PushEvent")
+						|| eventType.endsWith("PullRequestEvent")) {
+					String createdAt = (String) jsonObj.get("created_at");
+					gitModel.setCreatedAt(createdAt);
+					gitModel.setEventType(eventType);
 					JSONObject jsonObj3 = jsonObj.getJSONObject("actor");
-					String url1 = (String) jsonObj3.get("url");
-					gitModel.setUserGitUrl(url1);
-					int type1 = (Integer) jsonObj3.get("id");
-					gitModel.setGitUserId(type1);
+					String url = (String) jsonObj3.get("url");
+					gitModel.setUserGitUrl(url);
+					type = (Integer) jsonObj3.get("id");
+					gitModel.setGitUserId(type);
 					gitModel.setUserName(userName);
-				
-					if (type.endsWith("PullRequestEvent")) {
-						JSONObject jsonObj1 = jsonObj.getJSONObject("payload");
-						JSONObject jsonObj2 = jsonObj1.getJSONObject("pull_request");
-						Boolean merged = (Boolean) jsonObj2.get("merged");
+					if (eventType.endsWith("PullRequestEvent")) {
+						JSONObject payLoadJsonObj = jsonObj
+								.getJSONObject("payload");
+						JSONObject pullRequestJsonObj = payLoadJsonObj
+								.getJSONObject("pull_request");
+						Boolean merged = (Boolean) pullRequestJsonObj
+								.get("merged");
 						gitModel.setPullAction(merged);
 					} else {
 						gitModel.setPullAction(true);
 					}
 				}
-			modelObjList.add(gitModel);
-				//System.out.println(gitModel);
+				if(type != 0){
+					System.out.println("defdf"+type);
+					modelObjList.add(gitModel);
+				}
 			}
 
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//
 		return modelObjList;
 	}
-
-
 }

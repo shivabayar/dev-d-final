@@ -10,27 +10,32 @@ import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.GitModel;
 
 @Repository
-public class GitCommitTrendGraphRepositoryImpl implements GitCommitTrendGraphRepository {
+public class GitCommitTrendGraphRepositoryImpl implements
+		GitCommitTrendGraphRepository {
 
-	DisplayList displayList=new DisplayList();
+	DisplayList displayList = new DisplayList();
+
 	@Override
-	public Map<String, Integer> collectCommitGraph() {  
-		
-		System.out.println("in to collectcommit graph");
-		//return displayList.displayList();
-	//	return displayList.getDisplayList();
+	public Map<String, Integer> collectCommitGraph() {
 		return null;
-	
 	}
 
-	//DisplayList displayList=new DisplayList();
 	@Override
-	public String collectCommitGraph(String userName) {  
-		CreateGitModelObject createGitModelObject =new CreateGitModelObject();
-		DisplayList displayList = new DisplayList();
-		//System.out.println("in to collectcommit graph"+ displayList.displayList());
-		List<GitModel> listGitModel = createGitModelObject.gitModelObject(userName);
-		displayList.displayFilter(listGitModel);
-		return displayList.displayFilter(listGitModel);
+	public String collectCommitGraph(String userName) {
+		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+		DisplayList displayCommitTrendGraph = new DisplayList();
+		List<GitModel> listGitModel = createGitModelObject
+				.gitModelObject(userName);
+		return displayCommitTrendGraph
+				.displayCommitTrendGraphFilter(listGitModel);
+	}
+
+	@Override
+	public String pushCommitGraph(String userName) {
+		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+		DisplayList displayPullGraph = new DisplayList();
+		List<GitModel> listGitModel = createGitModelObject
+				.gitModelObject(userName);
+		return displayPullGraph.displayPullGraphFilter(listGitModel);
 	}
 }

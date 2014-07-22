@@ -1,5 +1,6 @@
 function loadDataActivity(url1){
-  $.ajax({url:url1,success:function(result){
+  $.ajax({url:"/api/activity"+USER_NAME
+	  ,success:function(result){
       var data = $.parseJSON(result);
       var res = "";
       $.each(data, function(i, item) {

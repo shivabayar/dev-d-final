@@ -14,21 +14,43 @@ public class DisplayList {
 	private String displayList;
 
 	public String displayList() {
-
-		System.out.println(" in displist" + displayList);
 		return displayList;
 	}
 
-	public String displayFilter(List<GitModel> gitModel) {
+	public String displayCommitTrendGraphFilter(List<GitModel> gitModel) {
 		DisplayImpl display = new DisplayImpl();
 		displayList = new String();
 		List<String> createdAtList = new ArrayList<String>();
-		for (GitModel model : gitModel) {
-			createdAtList.add(model.getCreatedAt());
+		boolean isNull = false;
+		try {
+			for (GitModel model : gitModel) {
+				String s = model.getEventType();
+				if (s.endsWith("PushEvent") && (isNull == s.equals(null))) {
+					createdAtList.add(model.getCreatedAt());
+				}
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
 		}
+		return displayList = display.frequencyCalculator(createdAtList);
+	}
 
-		System.out.println("in disp filter" + displayList);
-
+	public String displayPullGraphFilter(List<GitModel> gitModel) {
+		DisplayImpl display = new DisplayImpl();
+		displayList = new String();
+		List<String> createdAtList = new ArrayList<String>();
+		boolean isNull = false;
+		try {
+			for (GitModel model : gitModel) {
+				String s = model.getEventType();
+				if (s.endsWith("PullRequestEvent")
+						&& (isNull == s.equals(null))) {
+					createdAtList.add(model.getCreatedAt());
+				}
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		return displayList = display.frequencyCalculator(createdAtList);
 	}
 }
