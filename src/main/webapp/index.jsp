@@ -85,10 +85,7 @@
 	</div>
 
 	<div id="cl-wrapper">
-		<div class="cl-sidebar" style="width: 450px;" >
-			<div class="cl-toggle">
-				
-			</div>
+		<div class="cl-sidebar"> <!--style="width: 450px;" >-->
 			<div class="cl-navblock">
 				<div class="menu-space">
 					<div class="content">
@@ -121,12 +118,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="text-right collapse-button" style="padding: 7px 9px;">
-					
-					<button id="sidebar-collapse" class="btn btn-default" style="">
-						<i style="color: #fff;" class="fa fa-angle-left"></i>
-					</button>
-				</div>
 			</div>
 		</div>
 
@@ -138,7 +129,7 @@
 			<div class="cl-mcont">
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
-						<div class="block-flat" style="width: 450px; height: 300px;">
+						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
 							<div class="header">
 								<h3>Git Commit Trend (days ago)</h3>
 							</div>
@@ -146,7 +137,7 @@
 							<div id="commit_trend" ></div>
 						</div>
 
-						<div class="block-flat" style="width: 450px; height: 300px;">
+						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
 							<div class="header">
 								<h3>Pull Requests (Coming Soon...)</h3>
 							</div>
