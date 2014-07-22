@@ -2,6 +2,8 @@
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.display.DisplayList;
@@ -14,6 +16,8 @@ public class GitCommitTrendGraphRepositoryImpl implements
 
 	DisplayList displayTrendGraph = new DisplayList();
 
+	@Autowired
+	private CollectRepository collectRepository;
 	@Override
 	public Map<String, Integer> collectCommitGraph() {
 		return null;
@@ -31,11 +35,7 @@ public class GitCommitTrendGraphRepositoryImpl implements
 	}
 
 	public List<GitModel> listGitModel(String userName) {
-		CreateGitModelObject createGitModelObject = new CreateGitModelObject();
-		List<GitModel> listGitModel = createGitModelObject
-				.gitModelObject(userName);
-		return listGitModel;
-
+		return collectRepository.find(userName);
 	}
 
 }

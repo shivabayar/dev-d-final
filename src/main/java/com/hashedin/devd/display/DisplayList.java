@@ -6,51 +6,43 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hashedin.devd.model.GitModel;
 
 public class DisplayList {
 
-	private String displayList;
-
-	public String displayList() {
-		return displayList;
-	}
+//	private String displayJsonList = new String();
+	@Autowired
+	private DisplayImpl display = new DisplayImpl();
+	
+	
 
 	public String displayCommitTrendGraphFilter(List<GitModel> gitModel) {
-		DisplayImpl display = new DisplayImpl();
-		displayList = new String();
-		List<String> createdAtList = new ArrayList<String>();
-		boolean isNull = false;
-		try {
-			for (GitModel model : gitModel) {
-				String s = model.getEventType();
-				if (s.endsWith("PushEvent") && (isNull == s.equals(null))) {
-					createdAtList.add(model.getCreatedAt());
-				}
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		return displayList = display.frequencyCalculator(createdAtList);
+		
+		
+		return display.frequencyCalculator(createList(gitModel,"PushEvent"));
 	}
 
 	public String displayPullGraphFilter(List<GitModel> gitModel) {
-		DisplayImpl display = new DisplayImpl();
-		displayList = new String();
+		
+		return display.frequencyCalculator(createList(gitModel,"PullRequestEvent"));
+	}
+
+
+	public List<String> createList(List<GitModel> gitModel,String event){
 		List<String> createdAtList = new ArrayList<String>();
 		boolean isNull = false;
 		try {
 			for (GitModel model : gitModel) {
 				String s = model.getEventType();
-				if (s.endsWith("PullRequestEvent")
-						&& (isNull == s.equals(null))) {
+				if (s.endsWith(event) && (isNull == s.equals(null))) {
 					createdAtList.add(model.getCreatedAt());
 				}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		return displayList = display.frequencyCalculator(createdAtList);
+		return createdAtList;
 	}
 }

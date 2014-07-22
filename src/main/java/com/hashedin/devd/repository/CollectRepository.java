@@ -16,4 +16,6 @@ public interface CollectRepository {
 	void delete(String username);
 
 	void delete();
+
+	List<GitModel> listAll();
 }

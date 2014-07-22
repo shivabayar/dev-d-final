@@ -77,6 +77,7 @@ public class CollectRepositoryImpl implements CollectRepository {
 		TypedQuery<GitModel> query = em.createNamedQuery("GitModel.find",
 				GitModel.class).setParameter("username", username);
 		List<GitModel> results = query.getResultList();
+		System.out.println("dededd +results");
 		return results;
 
 	}
@@ -102,5 +103,13 @@ public class CollectRepositoryImpl implements CollectRepository {
 	@Override
 	public Alert save(Alert alert) {
 		return null;
+	}
+
+	@Override
+	public List<GitModel> listAll() {
+		TypedQuery<GitModel> query = em.createNamedQuery("GitModel.findAll",
+				GitModel.class);
+		List<GitModel> results = query.getResultList();
+		return results;
 	}
 }
