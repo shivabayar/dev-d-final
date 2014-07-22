@@ -9,7 +9,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -18,42 +17,36 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.hashedin.devd.model.Alert;
-import com.hashedin.devd.service.AlertService;
+import com.hashedin.devd.model.GitPush;
+
+import com.hashedin.devd.service.GitPushService;
 
 @Component
-@Path("/alerts")
-public class AlertResource {
+@Path("/gitpush")
+public class GitPushResource {
 
 	@Autowired
-	private AlertService alertService;
-	
+	private GitPushService gitPushService;
+
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<Alert> listAll() {
-		// Handles GET on /alerts. Lists all the alerts we have in our
+	public List<GitPush> listAll() {
+		// Handles GET on /user. Lists all the users we have in our
 		// system.
-		return alertService.findAll();
+		return gitPushService.findAll();
 	}
-	
+
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response create(Alert alert,
+	public Response create(GitPush gitPush,
 			@Context final HttpServletResponse response)
 			throws URISyntaxException {
-		// Handles POST on /alerts. Creates a new alert and adds it into an
+		// Handles POST on /user. Creates a new user and adds it into an
 		// repository.
-		alertService.save(alert);
+		gitPushService.save(gitPush);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/alerts/" + alert.getAlertId()))
-				.build();
+		return Response.created(new URI("/gitPush/" + gitPush.getId())).build();
 	}
-	
-	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Path("/{userid}")
-	public Alert find(@PathParam("userid") Long userid) {
-		return alertService.find(userid);
-	}
+
 }

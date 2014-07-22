@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @XmlRootElement
 @Entity
 @Table(name = "alerts")
-//@NamedQuery(name = "Alert.find", query = "SELECT a FROM Alert a where gitUserId=:userid")})
 @NamedQueries({ @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a")})
 public class Alert {
 
@@ -82,6 +81,6 @@ public class Alert {
 	}
 
 	public void setFrequentCommits(boolean frequentCommits) {
-		frequentCommits = frequentCommits;
+		this.isFrequentCommits = frequentCommits;
 	}
 }

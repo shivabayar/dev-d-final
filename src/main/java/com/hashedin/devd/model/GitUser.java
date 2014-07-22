@@ -1,12 +1,18 @@
 package com.hashedin.devd.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @XmlRootElement
 @Entity
@@ -16,50 +22,41 @@ public class GitUser {
 
 	@Id
 	@GeneratedValue
-	private long gitUserId; // owner of the repo
-	private String email;
-	private String apiKey;
-	private String userProfileUrl;
-	private String password;
+	private long userId; // user id for dev-d database
+	private String apiKey; // api key saved by us for accessing private repos
+	private String gitUserName; // git user name to redirect user to his repo
+	private String password; // password taken by dev-d
 
-	public long getGitUserId() {
-		return gitUserId;
+	@XmlInverseReference(mappedBy = "gitUser")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gitUser", targetEntity = GitPush.class)
+	private List<GitPush> gitPush;
+
+	@XmlInverseReference(mappedBy = "gitUser")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "gitUser", targetEntity = GitPull.class)
+	private List<GitPull> gitPull;
+
+	public List<GitPush> getGitPush() {
+		return gitPush;
 	}
 
-	public void setGitUserId(long gitUserId) {
-		this.gitUserId = gitUserId;
+	public void setGitPush(List<GitPush> gitPush) {
+		this.gitPush = gitPush;
 	}
 
-	public String getPassword() {
-		return password;
+	public List<GitPull> getGitPull() {
+		return gitPull;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUserProfileUrl() {
-		return userProfileUrl;
-	}
-
-	public void setUserProfileUrl(String userProfileUrl) {
-		this.userProfileUrl = userProfileUrl;
+	public void setGitPull(List<GitPull> gitPull) {
+		this.gitPull = gitPull;
 	}
 
 	public long getUserId() {
-		return gitUserId;
+		return userId;
 	}
 
-	public void setUserId(long gitUserId) {
-		this.gitUserId = gitUserId;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getApiKey() {
@@ -68,6 +65,22 @@ public class GitUser {
 
 	public void setApiKey(String apiKey) {
 		this.apiKey = apiKey;
+	}
+
+	public String getGitUserName() {
+		return gitUserName;
+	}
+
+	public void setGitUserName(String gitUserName) {
+		this.gitUserName = gitUserName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

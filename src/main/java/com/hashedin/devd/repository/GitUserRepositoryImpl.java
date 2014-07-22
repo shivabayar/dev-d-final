@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitUser;
 
 @Service
@@ -54,5 +53,4 @@ public class GitUserRepositoryImpl implements GitUserRepository {
 		em.remove(userToBeDeleted);
 		return userToBeDeleted;
 	}
-
 }
