@@ -3,12 +3,14 @@ package com.hashedin.devd.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.GitUser;
 import com.hashedin.devd.repository.GitUserRepository;
 
+@Repository
 @Service("gitUserService")
 public class GitUserServiceImpl implements GitUserService {
 	@Autowired
@@ -20,6 +22,7 @@ public class GitUserServiceImpl implements GitUserService {
 		return gitUserRepository.findAll();
 	}
 
+	@Override
 	@Transactional
 	public GitUser save(GitUser gitUser) {
 		// Saves the given task object and returns the same.
