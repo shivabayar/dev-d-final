@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<%-- <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%> --%>
+	import="org.springframework.security.core.context.SecurityContextHolder"%> 
 
 <html lang="en">
 <head>
@@ -82,7 +82,7 @@ else{
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
 
-							alt="Avatar" src="images/avatar2.jpg" /><%username%> <b class="caret"></b></a>
+							alt="Avatar" src="images/avatar2.jpg" /><%=username%> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
@@ -112,7 +112,7 @@ else{
 								<img src="images/avatar1_50.jpg" alt="Avatar" />
 							</div>
 							<div class="info">
-								<a href="#"></a> 
+								<a href="#"><%=username%></a> 
 							</div>
 						</div>
 						<div class="header" style="margin-left: 20px;">
@@ -197,7 +197,7 @@ else{
 	
 
 	<script type="text/javascript">
-      var USER_NAME = '<%username%>'; // 
+      var USER_NAME = '<%=username%>'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();
