@@ -55,8 +55,7 @@ public class AlertServiceTest extends TestCase {
 		assertEquals(alerts.size(), 1);
 		
 		alerts = service.find("Masroor");
-		//assertEquals(alerts.size(), 0);
-		
+		assertEquals(alerts.size(), 0);
 
 	}
 }
