@@ -17,35 +17,36 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.hashedin.devd.service.MetricService;
-import com.hashedin.devd.model.GitMetric;
+import com.hashedin.devd.model.GitPush;
+
+import com.hashedin.devd.service.GitPushService;
 
 @Component
-@Path("/metrics")
-public class MetricsResource {
+@Path("/gitpush")
+public class GitPushResource {
 
 	@Autowired
-	private MetricService metricService;
+	private GitPushService gitPushService;
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<GitMetric> listAll() {
-		// Handles GET on /metrics. Lists all the metrics we have in our
+	public List<GitPush> listAll() {
+		// Handles GET on /user. Lists all the users we have in our
 		// system.
-		return metricService.findAll();
+		return gitPushService.findAll();
 	}
 
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response create(GitMetric metric,
+	public Response create(GitPush gitPush,
 			@Context final HttpServletResponse response)
 			throws URISyntaxException {
-		// Handles POST on /metrics. Creates a new metrics and adds it into an
+		// Handles POST on /user. Creates a new user and adds it into an
 		// repository.
-		metricService.save(metric);
+		gitPushService.save(gitPush);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/metrics/" + metric.getMetricId()))
-				.build();
+		return Response.created(new URI("/gitPush/" + gitPush.getId())).build();
 	}
+
 }

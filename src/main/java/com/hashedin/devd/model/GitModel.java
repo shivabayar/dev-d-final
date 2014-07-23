@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "gitModel")
 @NamedQueries({
 		@NamedQuery(name = "GitModel.findAll", query = "SELECT u FROM GitModel u"),
-		@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where userName =:username"),
+//		@NamedQuery(name = "GitModel.find", query = "Select u from GitModel u where userName =:username"),
 		@NamedQuery(name = "GitModel.delete", query = "DELETE FROM GitModel m WHERE m.userName =:username") })
 public class GitModel {
 

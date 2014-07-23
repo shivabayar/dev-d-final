@@ -91,5 +91,5 @@
 			</property>
 		</bean>
 	</beans>
-
+	<bean id="userDetailService" class="com.hashedin.devd.service.UserDetailServiceImpl"></bean>
 </beans>
