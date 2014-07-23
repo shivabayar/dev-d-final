@@ -70,9 +70,8 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	public GitUser find(String username) {
 		// TODO Auto-generated method stub
 		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findUser",
-				GitUser.class);
+				GitUser.class).setParameter("username", username);
 		GitUser results = query.getSingleResult();
-		System.out.println("deddsedcdc "+results);
 		return results;
 	}
 }
