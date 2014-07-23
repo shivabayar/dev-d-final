@@ -18,16 +18,16 @@
 <!--     <logout logout-success-url="/logout" /> -->
     
     </http>
-<!-- <authentication-manager>
+<authentication-manager>
     <authentication-provider>
     	 <user-service>
             <user name="admin" password="admin" authorities="ROLE_ADMIN" />
          </user-service>
     </authentication-provider>
-</authentication-manager> -->
- <authentication-manager  alias="authenticationManager">
+</authentication-manager>
+<!--  <authentication-manager  alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailService">
         </authentication-provider>
-    </authentication-manager>
+    </authentication-manager> -->
 
 </beans:beans>

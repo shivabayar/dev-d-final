@@ -23,12 +23,6 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	private EntityManager em;
 
 	@Override
-	public GitUser find(Long gitUserId) {
-		// Returns the Task for given taskId.
-		return em.find(GitUser.class, gitUserId);
-	}
-
-	@Override
 	public List<GitUser> findAll() {
 		// Returns all the tasks in our system.
 		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findAll",

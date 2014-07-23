@@ -27,5 +27,37 @@ public class AlertServiceTest extends TestCase {
 	public void testAlerts() {
 		List<Alert> alerts = service.findAll();
 		assertEquals(alerts.size(), 0);
+		Alert alert=new Alert();
+		alert.setBrokeBuild(false);
+		alert.setFrequentCommits(true);
+		alert.setGitPullrequestId(0);
+		alert.setGitUserId(123);
+		alert.setIsFrequentCommits(true);
+		alert.setLastCommitedAt(1);
+		alert.setUserName("MasroorHamdani");
+		service.save(alert, alert.getUserName());
+		alerts = service.findAll();
+		assertEquals(alerts.size(), 1);
+		
+		alerts = service.find("MasroorHamdani");
+		assertEquals(alerts.size(), 1);
+		
+		alert=new Alert();
+		alert.setBrokeBuild(false);
+		alert.setFrequentCommits(true);
+		alert.setGitPullrequestId(0);
+		alert.setGitUserId(123);
+		alert.setIsFrequentCommits(true);
+		alert.setLastCommitedAt(1);
+		alert.setUserName("MasroorHamdani");
+		service.save(alert, alert.getUserName());
+		alerts = service.find("MasroorHamdani");
+		assertEquals(alerts.size(), 1);
+		
+		alerts = service.find("Masroor");
+		assertEquals(alerts.size(), 0);
+		
+		
+		
 	}
 }

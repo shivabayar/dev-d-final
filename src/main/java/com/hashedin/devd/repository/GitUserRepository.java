@@ -5,8 +5,6 @@ import java.util.List;
 import com.hashedin.devd.model.GitUser;
 
 public interface GitUserRepository {
-	GitUser find(Long gitUserId);
-
 	List<GitUser> findAll();
 
 	GitUser save(GitUser gitUser);
