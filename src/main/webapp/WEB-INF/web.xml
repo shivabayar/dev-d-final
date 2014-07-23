@@ -40,7 +40,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 	   	classpath:/jpaContext.xml
-<!-- 	    classpath:/applicationContext-security.xml -->
+	    classpath:/applicationContext-security.xml
 	   
 	   </param-value>
 	</context-param>
@@ -55,7 +55,7 @@
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 
-	<!-- <filter>
+	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter> 
@@ -63,7 +63,7 @@
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>-->
+	</filter-mapping>
 
 	<!-- Setup Jersey with Spring -->
 	<servlet>

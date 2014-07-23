@@ -16,13 +16,20 @@
 //String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
 	
 String username;
+if(SecurityContextHolder.getContext() !=  null){
+
 	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-if (principal instanceof UserDetails) {
-  username = ((UserDetails)principal).getUsername();
-} else {
-  username = principal.toString();
-}%>
+	if (principal instanceof UserDetails) {
+	  username = ((UserDetails)principal).getUsername();
+	} else {
+	  username = principal.toString();
+	}
+}
+else{
+	username=null;
+}
+%>
 <title>Dev-D</title>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800'
