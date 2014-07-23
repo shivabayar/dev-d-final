@@ -15,6 +15,12 @@ public class GitUserServiceImpl implements GitUserService {
 	private GitUserRepository gitUserRepository;
 
 	@Override
+	public GitUser find(Long gitUserId) {
+		// Returns the Task for given taskId.
+		return gitUserRepository.find(gitUserId);
+	}
+
+	@Override
 	public List<GitUser> findAll() {
 		// Returns all the tasks in our system.
 		return gitUserRepository.findAll();
