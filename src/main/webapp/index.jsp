@@ -50,6 +50,8 @@ else{
 <link rel="stylesheet" type="text/css"
 	href="js/jquery.nanoscroller/nanoscroller.css" />
 <link rel="stylesheet" type="text/css"
+	href="js/jquery.easypiechart/jquery.easy-pie-chart.css" />
+<link rel="stylesheet" type="text/css"
 	href="js/bootstrap.switch/bootstrap-switch.css" />
 <link rel="stylesheet" type="text/css"
 	href="js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
@@ -134,6 +136,12 @@ else{
 						</div>
 					</div>
 				</div>
+				<div class="text-right collapse-button" style="padding: 7px 9px;">
+					
+					<button id="sidebar-collapse" class="btn btn-default" style="">
+						<i style="color: #fff;" class="fa fa-angle-left"></i>
+					</button>
+				</div>
 			</div>
 		</div>
 
@@ -199,6 +207,7 @@ else{
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- // <script src="js/behaviour/voice-commands.js"></script> -->
 	<script src="js/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.flot/jquery.flot.js"></script>
 	<script type="text/javascript" src="js/jquery.flot/jquery.flot.pie.js"></script>
