@@ -41,12 +41,6 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	}
 
 	@Override
-	public GitUser update(GitUser gitUser, Long gitUserId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public GitUser delete(Long gitUserId) {
 		GitUser userToBeDeleted = em.find(GitUser.class, gitUserId);
 		em.remove(userToBeDeleted);
@@ -69,7 +63,10 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	@Override
 	public GitUser find(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findUser",
+				GitUser.class);
+		GitUser results = query.getSingleResult();
+		return results;
 	}
 }
 

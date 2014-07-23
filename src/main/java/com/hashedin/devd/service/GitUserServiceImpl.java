@@ -30,12 +30,6 @@ public class GitUserServiceImpl implements GitUserService {
 		return gitUser;
 	}
 
-	@Override
-	public GitUser update(GitUser gitUser, Long gitUserId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Transactional
 	public GitUser delete(Long gitUserId) {
 		// Deletes the task with the give taskId and returns the same.
