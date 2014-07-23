@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<%-- <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%> --%>
+	import="org.springframework.security.core.context.SecurityContextHolder"%> 
 
 <html lang="en">
 <head>
