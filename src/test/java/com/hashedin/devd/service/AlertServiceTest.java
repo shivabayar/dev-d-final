@@ -54,10 +54,11 @@ public class AlertServiceTest extends TestCase {
 		alerts = service.find("MasroorHamdani");
 		assertEquals(alerts.size(), 1);
 		
+
 		alerts = service.find("Masroor");
 		assertEquals(alerts.size(), 0);
 		
 		
-		
+
 	}
 }
