@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.Alert;
-import com.hashedin.devd.model.GitModel;
+
 
 @Repository("alertRepository")
 @Service

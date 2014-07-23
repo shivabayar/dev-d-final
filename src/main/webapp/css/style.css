@@ -697,7 +697,7 @@ body.modal-open,
 .cl-sidebar {
   background: #272930;
   position: absolute;
-  width: 216px;
+  width: 416px;
   z-index: 2;
 }
 .cl-sidebar .cl-toggle {

@@ -11,7 +11,7 @@
 </global-method-security>
 
 <http auto-config="true"  access-denied-page="/auth/denied">
-<intercept-url pattern="/systemproperties.jsp" access="ROLE_ANONYMOUS"/>
+	
 	<intercept-url pattern="/api/user/**" access="ROLE_ADMIN"/>
 	<intercept-url pattern="/**" access="ROLE_ADMIN" />
 	
@@ -20,16 +20,16 @@
 <!--     <logout logout-success-url="/logout" /> -->
     
     </http>
-<authentication-manager>
+<!-- <authentication-manager>
     <authentication-provider>
     	 <user-service>
             <user name="admin" password="admin" authorities="ROLE_ADMIN" />
          </user-service>
     </authentication-provider>
-</authentication-manager>
-<!--  <authentication-manager  alias="authenticationManager">
+</authentication-manager> -->
+ <authentication-manager  alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailService">
         </authentication-provider>
-    </authentication-manager> -->
+    </authentication-manager>
 
 </beans:beans>
