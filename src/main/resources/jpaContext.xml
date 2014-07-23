@@ -13,7 +13,7 @@
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
-
+<bean id="userDetailService" class="com.hashedin.devd.service.UserDetailServiceImpl"></bean>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -91,5 +91,5 @@
 			</property>
 		</bean>
 	</beans>
-
+	
 </beans>
