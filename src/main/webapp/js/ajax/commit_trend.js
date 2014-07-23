@@ -1,6 +1,4 @@
-google.load("visualization", "1", {
-	packages : [ "corechart" ]
-});
+google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
 function drawChart() {
 	$.ajax({
@@ -21,10 +19,12 @@ function drawChart() {
 				title : 'Your Commit trend'
 			};
 
-			var chart = new google.visualization.LineChart(document
-					.getElementById('commit_trend'));
-			chart.draw(data, options);
+        var options = {
+          title: 'Your Commit trend'
+        };
 
-		}
-	});
+        var chart = new google.visualization.LineChart(document.getElementById('commit_trend'));
+        chart.draw(data, options);
+
+  }});
 }

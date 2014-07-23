@@ -10,9 +10,6 @@ public interface GitUserRepository {
 	List<GitUser> findAll();
 
 	GitUser save(GitUser gitUser);
-
-	GitUser update(GitUser gitUser, Long gitUserId);
-
 	GitUser delete(Long gitUserId);
 
 	GitUser find(String email, String password);

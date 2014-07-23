@@ -11,8 +11,10 @@
 </global-method-security>
 
 <http auto-config="true"  access-denied-page="/auth/denied">
+	
 	<intercept-url pattern="/api/user/**" access="ROLE_ADMIN"/>
 	<intercept-url pattern="/**" access="ROLE_ADMIN" />
+	
 <!-- 	<form-login default-target-url="/index.jsp/api/collects/MasroorHamdani"/> -->
 <!-- 	<form-login login-page="/login.jsp" default-target-url="/index.jsp" /> -->
 <!--     <logout logout-success-url="/logout" /> -->
