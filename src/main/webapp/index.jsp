@@ -43,8 +43,6 @@ if (principal instanceof UserDetails) {
 <link rel="stylesheet" type="text/css"
 	href="js/jquery.nanoscroller/nanoscroller.css" />
 <link rel="stylesheet" type="text/css"
-	href="js/jquery.easypiechart/jquery.easy-pie-chart.css" />
-<link rel="stylesheet" type="text/css"
 	href="js/bootstrap.switch/bootstrap-switch.css" />
 <link rel="stylesheet" type="text/css"
 	href="js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
@@ -236,7 +234,6 @@ if (principal instanceof UserDetails) {
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- // <script src="js/behaviour/voice-commands.js"></script> -->
 	<script src="js/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.flot/jquery.flot.js"></script>
 	<script type="text/javascript" src="js/jquery.flot/jquery.flot.pie.js"></script>
