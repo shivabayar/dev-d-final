@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
+<%-- <%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%>
+	import="org.springframework.security.core.context.SecurityContextHolder"%> --%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -12,14 +12,15 @@
 <%
 //String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
 	
-String username;
-	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+// String username;
+// 	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-if (principal instanceof UserDetails) {
-  username = ((UserDetails)principal).getUsername();
-} else {
-  username = principal.toString();
-}%>
+// if (principal instanceof UserDetails) {
+//   username = ((UserDetails)principal).getUsername();
+// } else {
+//   username = principal.toString();
+// }
+%>
 
 <title>Dev-D</title>
 <link
@@ -74,7 +75,7 @@ if (principal instanceof UserDetails) {
 				<ul class="nav navbar-nav navbar-right user-nav">
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
-							alt="Avatar" src="images/avatar2.jpg" /><%= username %> <b class="caret"></b></a>
+							alt="Avatar" src="images/avatar2.jpg" /> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
@@ -107,7 +108,7 @@ if (principal instanceof UserDetails) {
 								<img src="images/avatar1_50.jpg" alt="Avatar" />
 							</div>
 							<div class="info">
-								<a href="#"><%= username %></a> 
+								<a href="#"></a> 
 							</div>
 						</div>
 						<div class="header" style="margin-left: 20px;">
@@ -226,7 +227,7 @@ if (principal instanceof UserDetails) {
 	
 
 	<script type="text/javascript">
-      var USER_NAME = '<%= username %>'; // 
+      var USER_NAME = 'MasroorHamdani'; // 
       $(document).ready(function(){
         //initialize the javascript
         App.init();

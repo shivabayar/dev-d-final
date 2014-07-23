@@ -22,9 +22,9 @@ public class AlertServiceImpl implements AlertService {
 	}
 
 	@Override
-	public Alert save(Alert alert) {
-		//alertRepository.save(alert);
-		return alert;
+	public void save(Alert alert,String userName) {
+		alertRepository.save(alert,userName);
+		
 	}
 
 	@Override
