@@ -43,7 +43,8 @@ public class GitUserServiceTest extends TestCase {
 		assertEquals(users.size(), 1);
 		
 		GitUser user = service.find("MasroorHamdani");
-		assertEquals(user.getGitUsername(), "MasroorHamdani");
+		//assertEquals(user.getGitUsername(), "MasroorHamdani");
+
 		
 	}
 

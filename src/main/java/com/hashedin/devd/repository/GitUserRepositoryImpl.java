@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitUser;
 
 @Service
@@ -21,12 +20,6 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 
 	@PersistenceContext
 	private EntityManager em;
-
-	@Override
-	public GitUser find(Long gitUserId) {
-		// Returns the Task for given taskId.
-		return em.find(GitUser.class, gitUserId);
-	}
 
 	@Override
 	public List<GitUser> findAll() {
@@ -48,12 +41,6 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	}
 
 	@Override
-	public GitUser update(GitUser gitUser, Long gitUserId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public GitUser delete(Long gitUserId) {
 		GitUser userToBeDeleted = em.find(GitUser.class, gitUserId);
 		em.remove(userToBeDeleted);
@@ -61,34 +48,25 @@ public class GitUserRepositoryImpl implements GitUserRepository,
 	}
 
 	@Override
-	public GitUser find(String email, String password) {
-		TypedQuery<GitUser> query = em
-				.createNamedQuery("GitUser.find", GitUser.class)
-				.setParameter("email", email)
-				.setParameter("password", password);
-		GitUser results = query.getSingleResult();
-		return results;
+	public UserDetails loadUserByUsername(String arg0)
+			throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findAll",
-				GitUser.class);
-		List<GitUser> results = query.getResultList();
-		for (GitUser gitUser : results) {
-			if (!username.equals(gitUser.getEmail())) {
-				throw new UsernameNotFoundException(username + " not found");
-			}
-		}
+	public GitUser find(String email, String password) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public GitUser find(String username) {
+		// TODO Auto-generated method stub
 		TypedQuery<GitUser> query = em.createNamedQuery("GitUser.findUser",
-				GitUser.class).setParameter("username", username);
+				GitUser.class);
 		GitUser results = query.getSingleResult();
 		return results;
 	}
 }
+
