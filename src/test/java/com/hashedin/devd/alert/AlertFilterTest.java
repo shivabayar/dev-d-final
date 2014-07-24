@@ -53,12 +53,7 @@ public class AlertFilterTest extends TestCase {
 		l.add(gitModel);
 		l.add(gitModel1);
 		l.add(gitModel3);
-<<<<<<< HEAD
-
 		// assertEquals(l.size(), 3);
-
-=======
->>>>>>> 63d2567cbc2a4c2a5b6db0702e09a89c81c89f65
 		boolean i = al.isFrequentComits(l2);
 		assertEquals(al.lastCommitedAt(gitModel.getCreatedAt()), 2);
 		assertEquals(i, false);
@@ -71,13 +66,7 @@ public class AlertFilterTest extends TestCase {
 		a.setGitUserId(1);
 		a.setUserName("pavankumar77");
 		a.setGitPullrequestId(1);
-<<<<<<< HEAD
-	
 		assertEquals(al2.createFilter(l).getAlertId(), 0);
-	//	System.out.println(a);
-=======
-		assertEquals(al2.createFilter(l).getAlertId(), 0);
->>>>>>> 63d2567cbc2a4c2a5b6db0702e09a89c81c89f65
 	//	assertEquals(al2.createFilter(l), a);
 
 	}
