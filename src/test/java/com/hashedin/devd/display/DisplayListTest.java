@@ -5,8 +5,6 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +52,9 @@ public class DisplayListTest extends TestCase {
 		l.add(gitModel1);
 		l.add(gitModel3);
 		assertEquals(l.size(), 3);
+		displayList.displayCommitTrendGraphFilter(l);
+		String str1 = displayList.displayPullGraphFilter(l);
+		assertNotNull(str1);
+
 	}
 }
