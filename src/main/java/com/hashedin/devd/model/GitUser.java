@@ -15,15 +15,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * @author Hasedin Technologies ltd.
+ * @version 1.0
+ * @since 24-07-2014
+ */
+@SuppressWarnings("serial")
 @XmlRootElement
 @Entity
 @Table(name = "gitUsers")
 @NamedQueries({
-		@NamedQuery(name = "GitUser.findAll", query = "SELECT u FROM GitUser u"),
-		@NamedQuery(name = "GitUser.find", query = "SELECT u FROM GitUser u where u.email=:email "
-				+ "and u.password=:password"),
-		@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
-				+ "u.gitUserName=:username") })
+@NamedQuery(name = "GitUser.findAll", query = "SELECT u FROM GitUser u"),
+@NamedQuery(name = "GitUser.find", query =
+"SELECT u FROM GitUser u where u.email=:email "
++ "and u.password=:password"),
+@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
++ "u.gitUserName=:username") })
 public class GitUser implements UserDetails {
 
 	@Id
@@ -94,47 +101,46 @@ public class GitUser implements UserDetails {
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "GitUser [userId=" + userId + ", gitUserId=" + gitUserId
-				+ ", email=" + email + ", apiKey=" + apiKey
-				+ ", userProfileUrl=" + userProfileUrl + ", password="
-				+ password + ", gitUsername=" + gitUserName + "]";
+			+ ", email=" + email + ", apiKey=" + apiKey
+			+ ", userProfileUrl=" + userProfileUrl + ", password="
+			+ password + ", gitUsername=" + gitUserName + "]";
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public final Collection<? extends GrantedAuthority> getAuthorities() {
 		return Arrays.asList(new GrantedAuthorityImpl("ROLE_ADMIN"));
 		//return null;
 	}
 
 	@Override
-	public String getUsername() {
-		
+	public final String getUsername() {
 		return getGitUsername();
 	}
 
 	@Override
-	public boolean isAccountNonExpired() {
+	public final boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
-	public boolean isAccountNonLocked() {
+	public final boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
-	public boolean isCredentialsNonExpired() {
+	public final boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
-	public boolean isEnabled() {
+	public final boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 }
-

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<%@page import="org.springframework.security.core.userdetails.UserDetails"%>
 <%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%> 
+	import="org.springframework.security.core.userdetails.UserDetails"%>
+<%@page
+	import="org.springframework.security.core.context.SecurityContextHolder"%>
 
 <html lang="en">
 <head>
@@ -80,7 +81,8 @@
 				<ul class="nav navbar-nav navbar-right user-nav">
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
-							alt="Avatar" src="images/avatar2.jpg" /><%=username %> <b class="caret"></b></a>
+							alt="Avatar" src="images/avatar2.jpg" /><%=username %> <b
+							class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
@@ -101,7 +103,8 @@
 	</div>
 
 	<div id="cl-wrapper">
-		<div class="cl-sidebar"> <!--style="width: 450px;" >-->
+		<div class="cl-sidebar">
+			<!--style="width: 450px;" >-->
 			<div class="cl-navblock">
 				<div class="menu-space">
 					<div class="content">
@@ -110,7 +113,7 @@
 								<img src="images/avatar1_50.jpg" alt="Avatar" />
 							</div>
 							<div class="info">
-								<a href="#"><%=username%></a> 
+								<a href="#"><%=username%></a>
 							</div>
 						</div>
 						<div class="header" style="margin-left: 20px;">
@@ -135,7 +138,7 @@
 					</div>
 				</div>
 				<div class="text-right collapse-button" style="padding: 7px 9px;">
-					
+
 					<button id="sidebar-collapse" class="btn btn-default" style="">
 						<i style="color: #fff;" class="fa fa-angle-left"></i>
 					</button>
@@ -146,25 +149,26 @@
 		<div class="container-fluid" id="pcont">
 			<div class="page-head">
 				<h2>Charts</h2>
-				
+
 			</div>
 			<div class="cl-mcont">
 				<div class="row">
-					<div class="col-sm-6 col-md-6">
-						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
+					<div class="col-sm-6 col-md-6" style="height: 600px;">
+						<div class="block-flat">
+							<!--style="width: 550px; height: 400px;">-->
 							<div class="header">
 								<h3>Git Commit Trend (days ago)</h3>
 							</div>
-							
-							<div id="commit_trend" ></div>
+							<div id="commit_trend"></div>
 						</div>
-
-						<div class="block-flat" ><!--style="width: 550px; height: 400px;">-->
+					</div>
+					
+					<div class="col-sm-6 col-md-6" style="height: 600px;">
+						<div class="block-flat">
 							<div class="header">
 								<h3>Pull Requests (Coming Soon...)</h3>
 							</div>
-							
-							<div id="pull_trend" ></div>
+							<div id="pull_trend"></div>
 						</div>
 					</div>
 				</div>
@@ -192,7 +196,7 @@
 	<script type="text/javascript"
 		src="js/jquery.gritter/js/jquery.gritter.js"></script>
 
-	
+
 
 	<script type="text/javascript">
       var USER_NAME = '<%=username %>'; // 
@@ -222,7 +226,7 @@
 	<script type="text/javascript" src="js/ajax/pull_trend.js"></script>
 	<!-- ajax calls -->
 	<script type="text/javascript" src="js/ajax/get_commit_trend_data.js"></script>
-<!-- 	<script type="text/javascript" src="js/ajax/get_activity_data.js"></script> -->
+	<!-- 	<script type="text/javascript" src="js/ajax/get_activity_data.js"></script> -->
 	<script type="text/javascript" src="js/ajax/get_alert_data.js"></script>
 </body>
 </html>

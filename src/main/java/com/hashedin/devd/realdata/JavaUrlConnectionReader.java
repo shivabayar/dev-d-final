@@ -3,6 +3,11 @@ package com.hashedin.devd.realdata;
 import java.net.*;
 import java.io.*;
 
+import org.jvnet.hk2.annotations.Service;
+import org.springframework.stereotype.Repository;
+
+@Service
+@Repository
 public class JavaUrlConnectionReader {
 
 	public String getUrlContents(String userName) {

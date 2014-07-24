@@ -12,7 +12,11 @@ import java.util.Date;
  */
 public class CommitedAt {
 
-	public long dayDifferenceCalculator(String createdAt) {
+	/**
+	 * @param createdAt			 (3)
+	 * @return dateDiffInDays
+	 */
+	public final long dayDifferenceCalculator(String createdAt) {
 		long dateDiffInDays = 0;
 		final int deleteCharAt = 19;
 		final int ddid = 998800;
@@ -28,11 +32,14 @@ public class CommitedAt {
 				StringBuilder sb = new StringBuilder(createdAt);
 				sb.deleteCharAt(deleteCharAt);
 				String resultString = sb.toString();
-				DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				DateFormat df2;
+				df2 = new SimpleDateFormat(
+						"yyyy-MM-dd HH:mm:ss");
 				Date nextDay = new Date();
 				Date previousDay = null;
 				previousDay = df2.parse(resultString);
-				long dateDiff = nextDay.getTime() - previousDay.getTime();
+				long dateDiff = nextDay.getTime()
+						- previousDay.getTime();
 				dateDiffInDays = dateDiff / res;
 
 			} else {

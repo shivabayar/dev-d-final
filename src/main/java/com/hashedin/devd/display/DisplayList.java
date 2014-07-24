@@ -18,11 +18,11 @@ public class DisplayList {
 @Autowired
 private DisplayImpl display = new DisplayImpl();
 
-	/**
-	 *  @param gitModel
-	 *            (3)
-	 * @return Description text text text.
-	 */
+/**
+ *  @param gitModel
+ *            (3)
+ * @return Description text text text.
+ */
 	public final String displayCommitTrendGraphFilter(
 			final List<GitModel> gitModel) {
 
@@ -45,7 +45,7 @@ private DisplayImpl display = new DisplayImpl();
 	/**
 	 * @param gitModel,
 	 * @param event           (3)
-	 * @return Description text text text.
+	 * @return createdAtList
 	 */
 	public final List<String> createList(final List<GitModel> gitModel,
 			final String event) {
