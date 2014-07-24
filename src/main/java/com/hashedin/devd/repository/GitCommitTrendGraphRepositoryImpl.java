@@ -1,13 +1,11 @@
- package com.hashedin.devd.repository;
+package com.hashedin.devd.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.display.DisplayList;
-import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.GitModel;
 /**
  * The Class GitCommitTrendGraphRepositoryImpl.
@@ -17,7 +15,7 @@ public class GitCommitTrendGraphRepositoryImpl implements
 GitCommitTrendGraphRepository {
 
 	/** The display trend graph. */
-	DisplayList displayTrendGraph = new DisplayList();
+	private DisplayList displayTrendGraph = new DisplayList();
 
 	/** The collect repository. */
 	@Autowired
@@ -30,17 +28,8 @@ GitCommitTrendGraphRepository {
 	@Override
 	public final String collectCommitGraph(final String userName) {
 		return displayTrendGraph
-			.displayCommitTrendGraphFilter(listGitModel(userName));
-	}
-
-	/* (non-Javadoc)
-	 * @see com.hashedin.devd.repository
-	 * .GitCommitTrendGraphRepository#pushCommitGraph(java.lang.String)
-	 */
-	@Override
-	public final String pushCommitGraph(final String userName) {
-		return displayTrendGraph
-				.displayPullGraphFilter(listGitModel(userName));
+				.displayCommitTrendGraphFilter(
+						listGitModel(userName));
 	}
 
 	/**
@@ -51,6 +40,16 @@ GitCommitTrendGraphRepository {
 	 */
 	public final List<GitModel> listGitModel(final String userName) {
 		return collectRepository.find(userName);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .GitCommitTrendGraphRepository#pushCommitGraph(java.lang.String)
+	 */
+	@Override
+	public final String pushCommitGraph(final String userName) {
+		return displayTrendGraph
+				.displayPullGraphFilter(listGitModel(userName));
 	}
 
 }

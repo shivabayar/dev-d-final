@@ -1,7 +1,9 @@
 package com.hashedin.devd.realdata;
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 import org.jvnet.hk2.annotations.Service;
 import org.springframework.stereotype.Repository;
@@ -33,7 +35,7 @@ public class JavaUrlConnectionReader {
 
 		try {
 			URL url = new URL("https://api.github.com/users/"
-		+ userName + "/events/public");
+					+ userName + "/events/public");
 			URLConnection urlConnection = url.openConnection();
 
 			BufferedReader bufferedReader = new BufferedReader(

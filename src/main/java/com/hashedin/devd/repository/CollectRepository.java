@@ -1,7 +1,7 @@
 package com.hashedin.devd.repository;
 
 import java.util.List;
-import com.hashedin.devd.model.Alert;
+
 import com.hashedin.devd.model.GitModel;
 
 /**
@@ -21,12 +21,24 @@ public interface CollectRepository {
 	void collect(String useName);
 
 	/**
-	 * Save.
+	 * Short one line description. (1)
+	 * <p>
+	 * Longer description. If there were any, it would be [2] here.
+	 * <p>
+	 * by HTML paragraph breaks.
+	 */
+	void delete();
+
+	/**
+	 * Short one line description. (1)
+	 * <p>
+	 * Longer description. If there were any, it would be [2] here.
+	 * <p>
+	 * by HTML paragraph breaks.
 	 *
-	 * @param gitModel the git model
 	 * @param username the username
 	 */
-	void save(List<GitModel> gitModel, String username);
+	void delete(String username);
 
 	/**
 	 * Short one line description. (1)
@@ -47,27 +59,15 @@ public interface CollectRepository {
 	 * <p>
 	 * by HTML paragraph breaks.
 	 *
-	 * @param username the username
-	 */
-	void delete(String username);
-
-	/**
-	 * Short one line description. (1)
-	 * <p>
-	 * Longer description. If there were any, it would be [2] here.
-	 * <p>
-	 * by HTML paragraph breaks.
-	 */
-	void delete();
-
-	/**
-	 * Short one line description. (1)
-	 * <p>
-	 * Longer description. If there were any, it would be [2] here.
-	 * <p>
-	 * by HTML paragraph breaks.
-	 *
 	 * @return string
 	 */
 	List<GitModel> listAll();
+
+	/**
+	 * Save.
+	 *
+	 * @param gitModel the git model
+	 * @param username the username
+	 */
+	void save(List<GitModel> gitModel, String username);
 }

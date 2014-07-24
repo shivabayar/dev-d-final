@@ -126,7 +126,7 @@ public class CollectRepositoryImpl implements CollectRepository {
 
 	}
 
-	/* (non-Javadoc)
+ /* (non-Javadoc)
 	 * @see com.hashedin.devd.repository.CollectRepository#delete()
 	 */
 	@SuppressWarnings("unused")
