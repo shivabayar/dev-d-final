@@ -2,9 +2,7 @@ package com.hashedin.devd.display;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,22 +11,32 @@ import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.integration.CommitedAt;
 
-@Repository
+
+/**
+ * @author Hasedin Technologies ltd.
+ * @version 1.0
+ * @since 24-07-2014
+ */
 @Service
+@Repository
+
 public class DisplayImpl implements DisplayInterface {
 
 	@Override
-	public String frequencyCalculator(List<String> CreatedAtList) {
+	public String frequencyCalculator(final List<String> createdList) {
 		int localCounter = 0;
 		CommitedAt commmitedAt = new CommitedAt();
 		String createdAt = "";
-		int count[] = new int[8];
+		final int arraySize = 8;
+		int[] count = new int[arraySize];
 		try {
-			for (int i = 0; i < CreatedAtList.size(); ++i) {
-				createdAt = CreatedAtList.get(i);
+			for (int i = 0; i < createdList.size(); ++i) {
+				createdAt = createdList.get(i);
 				localCounter = (int) commmitedAt
 						.dayDifferenceCalculator(createdAt);
-				if (localCounter < 7 && localCounter != 998800) {
+				final int temp1 = 998800;
+				final int temp = 7;
+				if (localCounter < temp && localCounter != temp1) {
 					count[localCounter] = ++count[localCounter];
 				}
 			}

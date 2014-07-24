@@ -15,19 +15,19 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hashedin.devd.model.Alert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:jpaContext.xml")
+@ContextConfiguration(locations = "classpath:jpaContext.xml")
 @ActiveProfiles("test")
 @Transactional
 public class AlertServiceTest extends TestCase {
 
 	@Autowired
 	private AlertService service;
-	
+
 	@Test
 	public void testAlerts() {
 		List<Alert> alerts = service.findAll();
 		assertEquals(alerts.size(), 0);
-		Alert alert=new Alert();
+		Alert alert = new Alert();
 		alert.setBrokeBuild(false);
 		alert.setFrequentCommits(true);
 		alert.setGitPullrequestId(0);
@@ -38,11 +38,11 @@ public class AlertServiceTest extends TestCase {
 		service.save(alert, alert.getUserName());
 		alerts = service.findAll();
 		assertEquals(alerts.size(), 1);
-		
+
 		alerts = service.find("MasroorHamdani");
 		assertEquals(alerts.size(), 1);
-		
-		alert=new Alert();
+
+		alert = new Alert();
 		alert.setBrokeBuild(false);
 		alert.setFrequentCommits(true);
 		alert.setGitPullrequestId(0);
