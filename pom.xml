@@ -236,6 +236,19 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/ebextensions</directory>
+                            <targetPath>.ebextensions</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
             <!--
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -348,7 +361,7 @@
                           <exclude>src/main/webapp/hackyScript.js</exclude>
                           <exclude>src/main/webapp/myDirectoryForThirdyPartyStuff</exclude>
                      </excludes>
-                     <reporter>jslint</reporter>
+                     <reporter>checkstyle</reporter>
                      <reportFile>target/jshint.xml</reportFile>
                      <failOnError>false</failOnError>
                  </configuration>
