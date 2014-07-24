@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "alerts")
 @NamedQueries({
 		@NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a"),
-		@NamedQuery(name = "Alert.find", query = "Select u from Alert u where userName =:username") })
+		@NamedQuery(name = "Alert.find", query = "Select u from Alert u where u.userName =:username") })
 // @NamedQuery(name = "Alert.find", query =
 // "SELECT a FROM Alert a where gitUserId=:userid")})
 public class Alert {
@@ -98,4 +98,12 @@ public class Alert {
 		this.gitUserId = gitUserId;
 	}
 
+	@Override
+	public String toString() {
+		return "Alert [alertId=" + alertId + ", gitPullrequestId="
+				+ gitPullrequestId + ", isBrokeBuild=" + isBrokeBuild
+				+ ", isFrequentCommits=" + isFrequentCommits
+				+ ", lastCommitedAt=" + lastCommitedAt + ", url=" + url
+				+ ", gitUserId=" + gitUserId + ", userName=" + userName + "]";
+	}
 }

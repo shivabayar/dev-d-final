@@ -15,6 +15,9 @@ public class CreateGitModelObject {
 	public List<GitModel> gitModelObject(String userName) {
 		JavaUrlConnectionReader realData = new JavaUrlConnectionReader();
 		String output = realData.getUrlContents(userName);
+		
+		//System.out.println("in git model object");
+		System.out.println("output "+output);
 		List<GitModel> modelObjList = new ArrayList<GitModel>();
 		JSONArray jArray;
 		try {

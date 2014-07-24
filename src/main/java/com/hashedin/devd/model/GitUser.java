@@ -20,10 +20,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "gitUsers")
 @NamedQueries({
 		@NamedQuery(name = "GitUser.findAll", query = "SELECT u FROM GitUser u"),
-		@NamedQuery(name = "GitUser.find", query = "SELECT u FROM GitUser u where email=:email "
-				+ "and password=:password"),
+		@NamedQuery(name = "GitUser.find", query = "SELECT u FROM GitUser u where u.email=:email "
+				+ "and u.password=:password"),
 		@NamedQuery(name = "GitUser.findUser", query = "SELECT u FROM GitUser u where "
-				+ "gitUserName=:username") })
+				+ "u.gitUserName=:username") })
 public class GitUser implements UserDetails {
 
 	@Id

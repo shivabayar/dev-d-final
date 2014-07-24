@@ -39,12 +39,13 @@ public class AlertResource {
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Path("/{username}")
 	public Response create(Alert alert,
-			@Context final HttpServletResponse response)
+			@Context final HttpServletResponse response, @PathParam("username") String username)
 			throws URISyntaxException {
 		// Handles POST on /alerts. Creates a new alert and adds it into an
 		// repository.
-		alertService.save(alert);
+		alertService.save(alert,username);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
 		return Response.created(new URI("/alerts/" + alert.getAlertId()))
 				.build();

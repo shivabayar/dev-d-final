@@ -6,6 +6,6 @@ import com.hashedin.devd.model.Alert;
 
 public interface AlertService {
 	List<Alert> findAll();
-	Alert save(Alert alert);
+	void save(Alert alert,String userName);
 	List<Alert> find(String userName);
 }
