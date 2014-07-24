@@ -1,36 +1,35 @@
 package com.hashedin.devd.display;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.hashedin.devd.model.GitModel;
 
+/**
+ * @author Hasedin Technologies ltd.
+ * @version 1.0
+ * @since 24-07-2014
+ */
 public class DisplayList {
 
-//	private String displayJsonList = new String();
+/**
+* Description of the variable here.
+*/
 	@Autowired
 	private DisplayImpl display = new DisplayImpl();
-	
-	
 
 	public String displayCommitTrendGraphFilter(List<GitModel> gitModel) {
-		
-		
-		return display.frequencyCalculator(createList(gitModel,"PushEvent"));
+
+		return display.frequencyCalculator(createList(gitModel, "PushEvent"));
 	}
 
 	public String displayPullGraphFilter(List<GitModel> gitModel) {
-		
-		return display.frequencyCalculator(createList(gitModel,"PullRequestEvent"));
+
+		return display.frequencyCalculator(createList(gitModel,
+				"PullRequestEvent"));
 	}
 
-
-	public List<String> createList(List<GitModel> gitModel,String event){
+	public List<String> createList(List<GitModel> gitModel, String event) {
 		List<String> createdAtList = new ArrayList<String>();
 		boolean isNull = false;
 		try {

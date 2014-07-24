@@ -8,47 +8,65 @@ import org.springframework.stereotype.Service;
 
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
-import com.hashedin.devd.alert.AlertsImpl;
 
+//import com.hashedin.devd.alert.AlertsImpl;
 
-//sdfasdfsda
+/**
+ * @author Hasedin Technologies ltd.
+ * @version 1.0
+ * @since 24-07-2014
+ */
 @Service
 @Repository
 public class AlertFilter {
 
-	public List<String> CreatedAtList;
+/**
+*list of string.(1)
+*/
+private List<String> createdAtList;
 
-	public Alert createFilter(List<GitModel> gitModel) {
-		Alert a = new Alert();
-		AlertsImpl alert = new AlertsImpl();
-		CreatedAtList = new ArrayList<String>();
-		long tempId = 0;
-		String url = null;
-		String name = null;
-		String createdAt = null;
-		boolean isRececentDate = false;
-		for (GitModel model : gitModel) {
-			CreatedAtList.add(model.getCreatedAt());
-			if (model.getGitUserId() != 0) {
-				tempId = model.getGitUserId();
-				url = model.getUserGitUrl();
-				name = model.getUserName();
-			}
-			if (model.getCreatedAt() != null && !isRececentDate) {
-				createdAt = model.getCreatedAt();
-				isRececentDate = true;
-			}
-
+/**
+* Filters the list of git model calculates, lastcommited at frequent Short
+* (1) one line description. (1) commits
+* @param gitModel
+* @return Alert object
+*/
+public final Alert createFilter(final List<GitModel> gitModel) {
+	Alert a = new Alert();
+	AlertsImpl alert = new AlertsImpl();
+	createdAtList = new ArrayList<String>();
+	long tempId = 0;
+	String url = null;
+	String name = null;
+	String createdAt = null;
+	boolean isRececentDate = false;
+	for (GitModel model : gitModel) {
+		createdAtList.add(model.getCreatedAt());
+		if (model.getGitUserId() != 0) {
+			tempId = model.getGitUserId();
+			url = model.getUserGitUrl();
+			name = model.getUserName();
 		}
-		a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
-		a.setIsFrequentCommits(alert.isFrequentComits(CreatedAtList));
-		a.setGitUserId(tempId);
-		a.setUrl(url);
-		a.setUserName(name);
-		return a;
-	}
+		if (model.getCreatedAt() != null && !isRececentDate) {
+			createdAt = model.getCreatedAt();
+			isRececentDate = true;
+		}
 
-	public List<String> getCreatedAtList() {
-		return CreatedAtList;
+	}
+	a.setLastCommitedAt(alert.lastCommitedAt(createdAt));
+	a.setIsFrequentCommits(alert.isFrequentComits(createdAtList));
+	a.setGitUserId(tempId);
+	a.setUrl(url);
+	a.setUserName(name);
+	return a;
+}
+
+	/**
+	 * Short one line description. (1)
+	 *
+	 * @return CreatedAtList
+	 */
+	public final List<String> getCreatedAtList() {
+		return createdAtList;
 	}
 }

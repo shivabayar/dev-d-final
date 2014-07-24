@@ -23,7 +23,7 @@ public class JavaUrlConnectionReader {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("content "+content.toString());
+		//System.out.println("content "+content.toString());
 		return content.toString();
 	}
 }
