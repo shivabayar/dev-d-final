@@ -42,10 +42,10 @@ public class CollectRepositoryImpl implements CollectRepository {
 		try {
 			List<GitModel> listGitModel = createGitModelObject
 					.gitModelObject(userName);
-			System.out.println("listModel "+listGitModel);
+			//System.out.println("listModel "+listGitModel);
 			save(listGitModel, userName);
 			Alert alertList = alertFilter.createFilter(listGitModel);
-			System.out.println("alertList "+alertList);
+			//System.out.println("alertList "+alertList);
 			alertRepository.save(alertList, userName);
 		} catch (Exception ex) {
 			s_log.error(ex);

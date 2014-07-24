@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.integration.CommitedAt;
 
+
 /**
  * @author Hasedin Technologies ltd.
  * @version 1.0
@@ -18,6 +19,7 @@ import com.hashedin.devd.integration.CommitedAt;
  */
 @Service
 @Repository
+
 public class DisplayImpl implements DisplayInterface {
 
 	@Override
