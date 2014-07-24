@@ -12,45 +12,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.Alert;
-
-
+/**
+ * The Class AlertRepositoryImpl.
+ *
+ * @author Hasedin Technologies ltd.
+ * @version 1.0
+ * @since 24-07-2014
+ */
 @Repository("alertRepository")
 @Service
 public class AlertRepositoryImpl implements AlertRepository {
 
+/** The em. */
 	@PersistenceContext
 	private EntityManager em;
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .AlertRepository#find(java.lang.String)
+	 */
 	@Override
-	public List<Alert> find(String username) {
+	public final List<Alert> find(final String username) {
 		TypedQuery<Alert> query = em
-				.createNamedQuery("Alert.find", Alert.class).setParameter(
-						"username", username);
+				.createNamedQuery("Alert.find", Alert.class)
+				.setParameter("username", username);
 		List<Alert> results = query.getResultList();
 		return results;
 	}
 
-	@Override
-	public List<Alert> findAll() {
-
-		TypedQuery<Alert> query = em.createNamedQuery("Alert.findAll",
-				Alert.class);
-		List<Alert> results = query.getResultList();
-		return results;
-	}
-
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .AlertRepository#save(com.hashedin.devd
+	 * .model.Alert, java.lang.String)
+	 */
 	@Override
 	@Transactional
-	public void save(List<Alert> alertList) {
-		for (Alert alert : alertList) {
-			em.persist(alert);
-			em.flush();
-		}
-	}
-
-	@Override
-	@Transactional
-	public void save(Alert alert, String userName) {
+	public final void save(final Alert alert, final String userName) {
 		List<Alert> results = find(userName);
 		if (results == null) {
 			em.persist(alert);
@@ -62,15 +59,16 @@ public class AlertRepositoryImpl implements AlertRepository {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .AlertRepository#delete(java.lang.String)
+	 */
+	@SuppressWarnings("unused")
 	@Override
-	public Alert update(Alert alert, Long alertId) {
-		return null;
-	}
-
-	@Override
-	public void delete(String userName) {
+	public final void delete(final String userName) {
 		Query q = em
-				.createQuery("DELETE FROM Alert a WHERE a.userName= :userName");
+				.createQuery("DELETE FROM Alert a "
+					+ "WHERE a.userName= :userName");
 		q.setParameter("userName", userName);
 		int deleted = q.executeUpdate();
 	}

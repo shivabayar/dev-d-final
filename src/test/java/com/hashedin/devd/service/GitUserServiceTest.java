@@ -15,15 +15,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.devd.model.GitUser;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GitUserServiceTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:jpaContext.xml")
 @ActiveProfiles("test")
 @Transactional
 public class GitUserServiceTest extends TestCase {
 
+	/** The service. */
 	@Autowired
 	private GitUserService service;
 
+	/**
+	 * Test users.
+	 */
 	@Test
 	public void testUsers() {
 		List<GitUser> users = service.findAll();

@@ -157,7 +157,7 @@
 						<div class="block-flat">
 							<!--style="width: 550px; height: 400px;">-->
 							<div class="header">
-								<h3>Git Commit Trend (days ago)</h3>
+								<h3>Git Commit Trend</h3>
 							</div>
 							<div id="commit_trend"></div>
 						</div>
@@ -166,7 +166,7 @@
 					<div class="col-sm-6 col-md-6" style="height: 600px;">
 						<div class="block-flat">
 							<div class="header">
-								<h3>Pull Requests (Coming Soon...)</h3>
+								<h3>Pull Requests</h3>
 							</div>
 							<div id="pull_trend"></div>
 						</div>

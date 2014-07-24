@@ -11,6 +11,8 @@ import com.hashedin.devd.model.GitModel;
 import com.hashedin.devd.realdata.JavaUrlConnectionReader;
 
 /**
+ * The Class CreateGitModelObject.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
@@ -18,7 +20,9 @@ import com.hashedin.devd.realdata.JavaUrlConnectionReader;
 public class CreateGitModelObject {
 
 /**
- * @param  userName          (3)
+ * Git model object.
+ *
+ * @param userName the user name
  * @return Description text text text.
  */
 	public final List<GitModel> gitModelObject(final String userName) {

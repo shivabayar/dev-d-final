@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
+ * The Class Alert.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
@@ -23,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 query = "Select u from Alert u where u.userName =:username") })
 public class Alert {
 
+	/** The alert id. */
 	@Id
 	@GeneratedValue
 	private long alertId;
@@ -79,7 +82,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  userName
+	 * @param userName the new user name
 	 */
 	public final void setUserName(final String userName) {
 		this.userName = userName;
@@ -94,7 +97,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param isFrequentCommits
+	 * @param isFrequentCommits the new frequent commits
 	 */
 	public final void setFrequentCommits(final boolean isFrequentCommits) {
 		this.isFrequentCommits = isFrequentCommits;
@@ -124,7 +127,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  alertId
+	 * @param alertId the new alert id
 	 */
 	public final void setAlertId(final long alertId) {
 		this.alertId = alertId;
@@ -154,7 +157,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param gitPullrequestId
+	 * @param gitPullrequestId the new git pullrequest id
 	 */
 	public final void setGitPullrequestId(final long gitPullrequestId) {
 		this.gitPullrequestId = gitPullrequestId;
@@ -169,6 +172,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
+	 * @return true, if is broke build
 	 */
 	public final boolean isBrokeBuild() {
 		return isBrokeBuild;
@@ -183,7 +187,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  isBrokeBuild
+	 * @param isBrokeBuild the new broke build
 	 */
 	public final void setBrokeBuild(boolean isBrokeBuild) {
 		this.isBrokeBuild = isBrokeBuild;
@@ -213,7 +217,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  isFrequentCommits
+	 * @param isFrequentCommits the new checks if is frequent commits
 	 */
 	public final void setIsFrequentCommits(boolean isFrequentCommits) {
 		this.isFrequentCommits = isFrequentCommits;
@@ -243,7 +247,7 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param lastCommitedAt
+	 * @param lastCommitedAt the new last commited at
 	 */
 	public final void setLastCommitedAt(final int lastCommitedAt) {
 		this.lastCommitedAt = lastCommitedAt;
@@ -273,9 +277,9 @@ public class Alert {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  url
+	 * @param url the new url
 	 */
-	public final void setUrl(String url) {
+	public final void setUrl(final String url) {
 		this.url = url;
 	}
 
@@ -295,10 +299,11 @@ public class Alert {
 	}
 
 	/**
-	 * @param gitUserId
-	 * @return gitUserId
+	 * Sets the git user id.
+	 *
+	 * @param gitUserId the new git user id
 	 */
-	public void setGitUserId(long gitUserId) {
+	public final void setGitUserId(final long gitUserId) {
 		this.gitUserId = gitUserId;
 	}
 
@@ -314,11 +319,14 @@ public class Alert {
 	 * @return Description text text text.
 	 */
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "Alert [alertId=" + alertId + ", gitPullrequestId="
-				+ gitPullrequestId + ", isBrokeBuild=" + isBrokeBuild
+				+ gitPullrequestId
+				+ ", isBrokeBuild=" + isBrokeBuild
 				+ ", isFrequentCommits=" + isFrequentCommits
-				+ ", lastCommitedAt=" + lastCommitedAt + ", url=" + url
-				+ ", gitUserId=" + gitUserId + ", userName=" + userName + "]";
+				+ ", lastCommitedAt="
+				+ lastCommitedAt + ", url=" + url
+				+ ", gitUserId=" + gitUserId
+				+ ", userName=" + userName + "]";
 	}
 }

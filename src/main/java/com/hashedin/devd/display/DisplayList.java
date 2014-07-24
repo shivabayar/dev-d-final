@@ -6,45 +6,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.hashedin.devd.model.GitModel;
 
 /**
+ * The Class DisplayList.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
  */
 public class DisplayList {
 
-/**
- * Description of the variable here.
- */
-@Autowired
-private DisplayImpl display = new DisplayImpl();
-
-/**
- *  @param gitModel
- *            (3)
- * @return Description text text text.
- */
-	public final String displayCommitTrendGraphFilter(
-			final List<GitModel> gitModel) {
-
-		return display.frequencyCalculator(createList(
-				gitModel, "PushEvent"));
-	}
+	/**
+	 * Description of the variable here.
+	 */
+	@Autowired
+	private DisplayImpl display = new DisplayImpl();
 
 	/**
+	 * Display commit trend graph filter.
+	 *
 	 * @param gitModel
 	 *            (3)
 	 * @return Description text text text.
 	 */
-	public final String displayPullGraphFilter(final
-			List<GitModel> gitModel) {
+	public final String displayCommitTrendGraphFilter(
+			final List<GitModel> gitModel) {
+
+		return display
+			.frequencyCalculator(createList(gitModel, "PushEvent"));
+	}
+
+	/**
+	 * Display pull graph filter.
+	 *
+	 * @param gitModel
+	 *            (3)
+	 * @return Description text text text.
+	 */
+	public final String
+	displayPullGraphFilter(final List<GitModel> gitModel) {
 
 		return display.frequencyCalculator(createList(gitModel,
 				"PullRequestEvent"));
 	}
 
 	/**
-	 * @param gitModel,
-	 * @param event           (3)
+	 * Creates the list.
+	 *
+	 * @param gitModel
+	 *            the git model
+	 * @param event
+	 *            (3)
 	 * @return createdAtList
 	 */
 	public final List<String> createList(final List<GitModel> gitModel,
@@ -55,7 +65,7 @@ private DisplayImpl display = new DisplayImpl();
 			for (GitModel model : gitModel) {
 				String s = model.getEventType();
 				if (s.endsWith(event)
-						&& (isNull == s.equals(null))) {
+					&& (isNull == s.equals(null))) {
 					createdAtList.add(model.getCreatedAt());
 				}
 			}

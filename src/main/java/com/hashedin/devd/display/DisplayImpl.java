@@ -11,19 +11,28 @@ import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.integration.CommitedAt;
 
-
 /**
- * @author Hasedin Technologies ltd.
- * @version 1.0
- * @since 24-07-2014
+ *The Class DisplayImpl.
+ *
+ *@author Hasedin Technologies ltd.
+ *@version 1.0
+ *@since 24-07-2014
  */
 @Service
 @Repository
-
 public class DisplayImpl implements DisplayInterface {
 
+	/*
+	 *(non-Javadoc)
+	 *
+	 *@see
+	 *com.hashedin.devd.display
+	 *.DisplayInterface#frequencyCalculator(java.util
+	 *.List)
+	 */
 	@Override
-	public String frequencyCalculator(final List<String> createdList) {
+	public final String
+	frequencyCalculator(final List<String> createdList) {
 		int localCounter = 0;
 		CommitedAt commmitedAt = new CommitedAt();
 		String createdAt = "";
@@ -33,11 +42,13 @@ public class DisplayImpl implements DisplayInterface {
 			for (int i = 0; i < createdList.size(); ++i) {
 				createdAt = createdList.get(i);
 				localCounter = (int) commmitedAt
-						.dayDifferenceCalculator(createdAt);
+					.dayDifferenceCalculator(createdAt);
 				final int temp1 = 998800;
 				final int temp = 7;
-				if (localCounter < temp && localCounter != temp1) {
-					count[localCounter] = ++count[localCounter];
+				if (localCounter < temp
+						&& localCounter != temp1) {
+					count[localCounter] =
+							++count[localCounter];
 				}
 			}
 		} catch (NullPointerException e) {
@@ -57,7 +68,8 @@ public class DisplayImpl implements DisplayInterface {
 		daysAgo.add("six");
 		do {
 			try {
-				weekMap.put(daysAgo.get(currentIndex), count[currentIndex]);
+				weekMap.put(daysAgo
+				.get(currentIndex), count[currentIndex]);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

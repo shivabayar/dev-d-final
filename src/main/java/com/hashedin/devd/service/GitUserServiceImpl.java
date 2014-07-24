@@ -10,46 +10,71 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hashedin.devd.model.GitUser;
 import com.hashedin.devd.repository.GitUserRepository;
 
+/**
+ * The Class GitUserServiceImpl.
+ */
 @Repository
 @Service("gitUserService")
 public class GitUserServiceImpl implements GitUserService {
+
+	/** The git user repository. */
 	@Autowired
 	private GitUserRepository gitUserRepository;
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service.GitUserService#find(java.lang.Long)
+	 */
 	@Override
-	public GitUser find(Long gitUserId) {
+	public final GitUser find(final Long gitUserId) {
 		// Returns the Task for given taskId.
 		return gitUserRepository.find(gitUserId);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service.GitUserService#findAll()
+	 */
 	@Override
-	public List<GitUser> findAll() {
+	public final List<GitUser> findAll() {
 		// Returns all the tasks in our system.
 		return gitUserRepository.findAll();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service
+	 * .GitUserService#save(com.hashedin.devd.model.GitUser)
+	 */
 	@Override
 	@Transactional
-	public GitUser save(GitUser gitUser) {
+	public final GitUser save(final GitUser gitUser) {
 		// Saves the given task object and returns the same.
 		gitUserRepository.save(gitUser);
 		return gitUser;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service.GitUserService#delete(java.lang.Long)
+	 */
 	@Transactional
-	public GitUser delete(Long gitUserId) {
+	public GitUser delete(final Long gitUserId) {
 		// Deletes the task with the give taskId and returns the same.
 		return gitUserRepository.delete(gitUserId);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service
+	 * .GitUserService#find(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public GitUser find(String email, String password) {
+	public final GitUser find(final String email, final String password) {
 		// TODO Auto-generated method stub
 		return gitUserRepository.find(email, password);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.service.GitUserService#find(java.lang.String)
+	 */
 	@Override
-	public GitUser find(String username) {
+	public final GitUser find(final String username) {
 		return gitUserRepository.find(username);
 	}
 

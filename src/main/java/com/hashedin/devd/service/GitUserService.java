@@ -4,15 +4,56 @@ import java.util.List;
 
 import com.hashedin.devd.model.GitUser;;
 
+/**
+ * The Interface GitUserService.
+ */
 public interface GitUserService {
+
+	/**
+	 * Find.
+	 *
+	 * @param gitUserId the git user id
+	 * @return the git user
+	 */
 	GitUser find(Long gitUserId);
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	List<GitUser> findAll();
 
+	/**
+	 * Save.
+	 *
+	 * @param gitUser the git user
+	 * @return the git user
+	 */
 	GitUser save(GitUser gitUser);
 
+	/**
+	 * Delete.
+	 *
+	 * @param gitUserId the git user id
+	 * @return the git user
+	 */
 	GitUser delete(Long gitUserId);
-	
-	GitUser find (String email, String password);
-	GitUser find (String username);
+
+	/**
+	 * Find.
+	 *
+	 * @param email the email
+	 * @param password the password
+	 * @return the git user
+	 */
+	GitUser find(String email , String password);
+
+	/**
+	 * Find.
+	 *
+	 * @param username the username
+	 * @return the git user
+	 */
+	GitUser find(String username);
 }

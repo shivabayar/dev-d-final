@@ -22,40 +22,66 @@ import com.hashedin.devd.model.GitUser;
 import com.hashedin.devd.service.GitUserService;
 
 //@Required
+/**
+ * The Class GitUserResource.
+ */
 @Component
 @Path("/user")
 public class GitUserResource {
+
+	/** The git user service. */
 	@Autowired
 	private GitUserService gitUserService;
 
+	/**
+	 * List all.
+	 *
+	 * @return the list
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<GitUser> listAll() {
+	public final List<GitUser> listAll() {
 		// Handles GET on /user. Lists all the users we have in our
 		// system.
 		return gitUserService.findAll();
 	}
 
+	/**
+	 * Find.
+	 *
+	 * @param username the username
+	 * @return the git user
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{username}")
-	public GitUser find(@PathParam("username") String username) {
+	public final GitUser find(@PathParam("username")
+	final String username) {
 		// Handles GET on /user. Lists all the users we have in our
 		// system.
 		return gitUserService.find(username);
 	}
 
+	/**
+	 * Creates the.
+	 *
+	 * @param user the user
+	 * @param response the response
+	 * @return the response
+	 * @throws URISyntaxException the URI syntax exception
+	 */
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response create(GitUser user,
+	public final Response create(final GitUser user,
 			@Context final HttpServletResponse response)
 			throws URISyntaxException {
 		// Handles POST on /user. Creates a new user and adds it into an
 		// repository.
 		gitUserService.save(user);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/user/" + user.getUserId())).build();
+		return Response
+			.created(new URI("/user/" + user.getUserId())).build();
 	}
 
 }

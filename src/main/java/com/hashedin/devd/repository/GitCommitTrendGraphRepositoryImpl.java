@@ -9,32 +9,47 @@ import org.springframework.stereotype.Repository;
 import com.hashedin.devd.display.DisplayList;
 import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.GitModel;
-
+/**
+ * The Class GitCommitTrendGraphRepositoryImpl.
+ */
 @Repository
 public class GitCommitTrendGraphRepositoryImpl implements
-		GitCommitTrendGraphRepository {
+GitCommitTrendGraphRepository {
 
+	/** The display trend graph. */
 	DisplayList displayTrendGraph = new DisplayList();
 
+	/** The collect repository. */
 	@Autowired
 	private CollectRepository collectRepository;
-	@Override
-	public Map<String, Integer> collectCommitGraph() {
-		return null;
-	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .GitCommitTrendGraphRepository#collectCommitGraph(java.lang.String)
+	 */
 	@Override
-	public String collectCommitGraph(String userName) {
+	public final String collectCommitGraph(final String userName) {
 		return displayTrendGraph
-				.displayCommitTrendGraphFilter(listGitModel(userName));
+			.displayCommitTrendGraphFilter(listGitModel(userName));
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .GitCommitTrendGraphRepository#pushCommitGraph(java.lang.String)
+	 */
 	@Override
-	public String pushCommitGraph(String userName) {
-		return displayTrendGraph.displayPullGraphFilter(listGitModel(userName));
+	public final String pushCommitGraph(final String userName) {
+		return displayTrendGraph
+				.displayPullGraphFilter(listGitModel(userName));
 	}
 
-	public List<GitModel> listGitModel(String userName) {
+	/**
+	 * List git model.
+	 *
+	 * @param userName the user name
+	 * @return the list
+	 */
+	public final List<GitModel> listGitModel(final String userName) {
 		return collectRepository.find(userName);
 	}
 

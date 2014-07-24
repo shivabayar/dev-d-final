@@ -21,40 +21,55 @@ import org.springframework.stereotype.Component;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.service.AlertService;
 
+/**
+ * The Class AlertResource.
+ */
 @Component
 @Path("/alerts")
 public class AlertResource {
 
+	/** The alert service. */
 	@Autowired
 	private AlertService alertService;
 
-	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<Alert> listAll() {
-		// Handles GET on /alerts. Lists all the alerts we have in our
-		// system.
-		return alertService.findAll();
-	}
-
+	/**
+	 * Creates the.
+	 *
+	 * @param alert the alert
+	 * @param response the response
+	 * @param username the username
+	 * @return the response
+	 * @throws URISyntaxException the URI syntax exception
+	 */
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{username}")
-	public Response create(Alert alert,
-			@Context final HttpServletResponse response, @PathParam("username") String username)
+	public final Response create(final Alert alert,
+			@Context final HttpServletResponse response,
+			@PathParam("username") final String username)
 			throws URISyntaxException {
-		// Handles POST on /alerts. Creates a new alert and adds it into an
+		// Handles POST on /alerts.
+		//Creates a new alert and adds it into an
 		// repository.
-		alertService.save(alert,username);
+		alertService.save(alert , username);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/alerts/" + alert.getAlertId()))
+		return Response.created(new URI("/alerts/" + alert
+				.getAlertId()))
 				.build();
 	}
 
+	/**
+	 * Find.
+	 *
+	 * @param username the username
+	 * @return the list
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{username}")
-	public List<Alert> find(@PathParam("username") String username) {
+	public final List<Alert> find(@PathParam("username")
+	final String username) {
 		return alertService.find(username);
 	}
 }

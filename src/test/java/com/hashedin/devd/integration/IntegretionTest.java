@@ -13,17 +13,26 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hashedin.devd.model.GitModel;
 import com.hashedin.devd.realdata.JavaUrlConnectionReader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IntegretionTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:jpaContext.xml")
 @ActiveProfiles("test")
 @Transactional
 public class IntegretionTest extends TestCase {
 
+	/** The create git model. */
 	CreateGitModelObject createGitModel = new CreateGitModelObject();
 
+	/** The juc. */
 	@Autowired
 	JavaUrlConnectionReader juc = new JavaUrlConnectionReader();
 
+	/**
+	 * Test alerts.
+	 */
 	@Test
 	public void testAlerts() {
 		@SuppressWarnings("unused")

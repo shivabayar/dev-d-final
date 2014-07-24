@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * The Class GitModel.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
@@ -78,9 +80,9 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param userName
+	 * @param userName the new user name
 	 */
-	public final void setUserName(String userName) {
+	public final void setUserName(final String userName) {
 		this.userName = userName;
 	}
 
@@ -108,7 +110,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  variable Description text text text.          (3)
+	 * @param userId the new user id
 	 */
 	public final void setUserId(final long userId) {
 		this.userId = userId;
@@ -123,7 +125,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  pullAction
+	 * @param pullAction the new pull action
 	 */
 	public final void setPullAction(final boolean pullAction) {
 		this.pullAction = pullAction;
@@ -153,7 +155,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  gitUserId
+	 * @param gitUserId the new git user id
 	 */
 	public final void setGitUserId(final long gitUserId) {
 		this.gitUserId = gitUserId;
@@ -183,7 +185,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param userGitUrl
+	 * @param userGitUrl the new user git url
 	 */
 	public final void setUserGitUrl(final String userGitUrl) {
 		this.userGitUrl = userGitUrl;
@@ -213,7 +215,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param merged
+	 * @param merged the new pull action
 	 */
 	public final void setPullAction(final Boolean merged) {
 		this.pullAction = merged;
@@ -243,7 +245,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  createdAt.
+	 * @param createdAt the new created at
 	 */
 	public final void setCreatedAt(final String createdAt) {
 		this.createdAt = createdAt;
@@ -273,7 +275,7 @@ public class GitModel {
 	 * And even more explanations to follow in consecutive
 	 * paragraphs separated by HTML paragraph breaks.
 	 *
-	 * @param  eventType
+	 * @param eventType the new event type
 	 */
 	public final void setEventType(final String eventType) {
 		this.eventType = eventType;

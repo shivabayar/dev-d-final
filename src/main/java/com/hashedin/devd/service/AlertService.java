@@ -4,8 +4,24 @@ import java.util.List;
 
 import com.hashedin.devd.model.Alert;
 
+/**
+ * The Interface AlertService.
+ */
 public interface AlertService {
-	List<Alert> findAll();
-	void save(Alert alert,String userName);
+
+	/**
+	 * Save.
+	 *
+	 * @param alert the alert
+	 * @param userName the user name
+	 */
+	void save(Alert alert , String userName);
+
+	/**
+	 * Find.
+	 *
+	 * @param userName the user name
+	 * @return the list
+	 */
 	List<Alert> find(String userName);
 }

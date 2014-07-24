@@ -5,7 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
+ * The Class CommitedAt.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
@@ -13,7 +16,9 @@ import java.util.Date;
 public class CommitedAt {
 
 	/**
-	 * @param createdAt			 (3)
+	 * Day difference calculator.
+	 *
+	 * @param createdAt 		 (3)
 	 * @return dateDiffInDays
 	 */
 	public final long dayDifferenceCalculator(String createdAt) {

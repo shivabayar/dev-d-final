@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
 
+
 //import com.hashedin.devd.alert.AlertsImpl;
 
 /**
+ * The Class AlertFilter.
+ *
  * @author Hasedin Technologies ltd.
  * @version 1.0
  * @since 24-07-2014
@@ -21,16 +24,17 @@ import com.hashedin.devd.model.GitModel;
 public class AlertFilter {
 
 /**
-*list of string.(1)
+*list of string.
 */
 private List<String> createdAtList;
 
 /**
-* Filters the list of git model calculates, lastcommited at frequent Short
-* (1) one line description. (1) commits
-* @param gitModel
-* @return Alert object
-*/
+ * Filters the list of git model calculates, lastcommited at frequent Short
+ * (1) one line description. (1) commits
+ *
+ * @param gitModel the git model
+ * @return Alert object
+ */
 public final Alert createFilter(final List<GitModel> gitModel) {
 	Alert a = new Alert();
 	AlertsImpl alert = new AlertsImpl();
@@ -60,13 +64,4 @@ public final Alert createFilter(final List<GitModel> gitModel) {
 	a.setUserName(name);
 	return a;
 }
-
-	/**
-	 * Short one line description. (1)
-	 *
-	 * @return CreatedAtList
-	 */
-	public final List<String> getCreatedAtList() {
-		return createdAtList;
-	}
 }

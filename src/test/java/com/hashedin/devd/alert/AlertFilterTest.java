@@ -15,15 +15,25 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AlertFilterTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:jpaContext.xml")
 @ActiveProfiles("test")
 @Transactional
 public class AlertFilterTest extends TestCase {
 
+	/** The al. */
 	AlertsImpl al = new AlertsImpl();
+	
+	/** The al2. */
 	AlertFilter al2 = new AlertFilter();
 
+	/**
+	 * Test alerts.
+	 */
 	@Test
 	public void testAlerts() {
 		Alert a = new Alert();
@@ -53,7 +63,7 @@ public class AlertFilterTest extends TestCase {
 		l.add(gitModel);
 		l.add(gitModel1);
 		l.add(gitModel3);
-		// assertEquals(l.size(), 3);
+		assertEquals(l.size(),3);
 		boolean i = al.isFrequentComits(l2);
 		assertEquals(al.lastCommitedAt(gitModel.getCreatedAt()), 2);
 		assertEquals(i, false);
@@ -67,7 +77,5 @@ public class AlertFilterTest extends TestCase {
 		a.setUserName("pavankumar77");
 		a.setGitPullrequestId(1);
 		assertEquals(al2.createFilter(l).getAlertId(), 0);
-	//	assertEquals(al2.createFilter(l), a);
-
 	}
 }

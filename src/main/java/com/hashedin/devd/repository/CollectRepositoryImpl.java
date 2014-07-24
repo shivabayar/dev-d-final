@@ -1,6 +1,7 @@
 package com.hashedin.devd.repository;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,34 +18,48 @@ import com.hashedin.devd.integration.CreateGitModelObject;
 import com.hashedin.devd.model.Alert;
 import com.hashedin.devd.model.GitModel;
 
+/**
+ * The Class CollectRepositoryImpl.
+ */
 @Repository("collectRepository")
 @Service
 public class CollectRepositoryImpl implements CollectRepository {
 
+	/** The Constant s_log. */
 	private static final Logger s_log = Logger
 			.getLogger(CollectRepository.class);
 
+	/** The em. */
 	@PersistenceContext
 	private EntityManager em;
 
+	/** The alert filter. */
 	@Autowired
 	private AlertFilter alertFilter;
 
+	/** The alert repository. */
 	@Autowired
 	private AlertRepository alertRepository;
 
-	private CreateGitModelObject createGitModelObject = new CreateGitModelObject();
+	/** The create git model object. */
+	private CreateGitModelObject
+	createGitModelObject = new CreateGitModelObject();
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .CollectRepository#collect(java.lang.String)
+	 */
 	@Override
 	@Transactional
-	public void collect(String userName) {
+	public final void collect(final String userName) {
 		// function call to get username tanwanirahul
 		try {
 			List<GitModel> listGitModel = createGitModelObject
 					.gitModelObject(userName);
 			//System.out.println("listModel "+listGitModel);
 			save(listGitModel, userName);
-			Alert alertList = alertFilter.createFilter(listGitModel);
+			Alert alertList = alertFilter
+					.createFilter(listGitModel);
 			//System.out.println("alertList "+alertList);
 			alertRepository.save(alertList, userName);
 		} catch (Exception ex) {
@@ -52,19 +67,24 @@ public class CollectRepositoryImpl implements CollectRepository {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .CollectRepository#save(java.util.List, java.lang.String)
+	 */
 	@Override
 	@Transactional
-	public void save(List<GitModel> gitModel, String userName) {
+	public final void save(final List<GitModel> gitModel
+			, final String userName) {
 		List<GitModel> results = find(userName);
 		if (results == null) {
-			
+
 			for (GitModel gitmodel : gitModel) {
 				em.persist(gitmodel);
 				em.flush();
 			}
 			delete();
 		} else {
-			
+
 			delete(userName);
 			for (GitModel gitmodel : gitModel) {
 				em.persist(gitmodel);
@@ -74,42 +94,59 @@ public class CollectRepositoryImpl implements CollectRepository {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .CollectRepository#find(java.lang.String)
+	 */
 	@Override
-	public List<GitModel> find(String username) {
-		TypedQuery<GitModel> query = em.createNamedQuery("GitModel.find",
-				GitModel.class).setParameter("username", username);
+	public final List<GitModel> find(final String username) {
+		TypedQuery<GitModel> query = em
+				.createNamedQuery("GitModel.find",
+				GitModel.class)
+				.setParameter("username", username);
 		List<GitModel> results = query.getResultList();
 		System.out.println("dededd +results");
 		return results;
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository
+	 * .CollectRepository#delete(java.lang.String)
+	 */
+	@SuppressWarnings("unused")
 	@Override
 	@Transactional
-	public void delete(String username) {
+	public final void delete(final String username) {
 		Query q = em
-				.createQuery("DELETE FROM GitModel s WHERE s.userName= :userName");
+				.createQuery("DELETE FROM GitModel s "
+					+ "WHERE s.userName= :userName");
 		q.setParameter("userName", username);
 		int deleted = q.executeUpdate();
 
 	}
+
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository.CollectRepository#delete()
+	 */
+	@SuppressWarnings("unused")
 	@Override
 	@Transactional
-	public void delete() {
+	public final void delete() {
 		Query q = em
-				.createQuery("DELETE FROM GitModel s WHERE s.gitUserId= 0");
+				.createQuery("DELETE FROM GitModel"
+						+ " s WHERE s.gitUserId= 0");
 		int deleted = q.executeUpdate();
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.hashedin.devd.repository.CollectRepository#listAll()
+	 */
 	@Override
-	public Alert save(Alert alert) {
-		return null;
-	}
-
-	@Override
-	public List<GitModel> listAll() {
-		TypedQuery<GitModel> query = em.createNamedQuery("GitModel.findAll",
+	public final List<GitModel> listAll() {
+		TypedQuery<GitModel> query = em
+				.createNamedQuery("GitModel.findAll",
 				GitModel.class);
 		List<GitModel> results = query.getResultList();
 		return results;
