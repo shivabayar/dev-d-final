@@ -8,9 +8,13 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jvnet.hk2.annotations.Service;
+import org.springframework.stereotype.Repository;
 
 import com.hashedin.devd.integration.CommitedAt;
 
+@Repository
+@Service
 public class DisplayImpl implements DisplayInterface {
 
 	@Override
