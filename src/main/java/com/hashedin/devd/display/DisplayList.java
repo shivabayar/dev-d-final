@@ -13,29 +13,49 @@ import com.hashedin.devd.model.GitModel;
 public class DisplayList {
 
 /**
-* Description of the variable here.
-*/
-	@Autowired
-	private DisplayImpl display = new DisplayImpl();
+ * Description of the variable here.
+ */
+@Autowired
+private DisplayImpl display = new DisplayImpl();
 
-	public String displayCommitTrendGraphFilter(List<GitModel> gitModel) {
+	/**
+	 *  @param gitModel
+	 *            (3)
+	 * @return Description text text text.
+	 */
+	public final String displayCommitTrendGraphFilter(
+			final List<GitModel> gitModel) {
 
-		return display.frequencyCalculator(createList(gitModel, "PushEvent"));
+		return display.frequencyCalculator(createList(
+				gitModel, "PushEvent"));
 	}
 
-	public String displayPullGraphFilter(List<GitModel> gitModel) {
+	/**
+	 * @param gitModel
+	 *            (3)
+	 * @return Description text text text.
+	 */
+	public final String displayPullGraphFilter(final
+			List<GitModel> gitModel) {
 
 		return display.frequencyCalculator(createList(gitModel,
 				"PullRequestEvent"));
 	}
 
-	public List<String> createList(List<GitModel> gitModel, String event) {
+	/**
+	 * @param gitModel,
+	 * @param event           (3)
+	 * @return Description text text text.
+	 */
+	public final List<String> createList(final List<GitModel> gitModel,
+			final String event) {
 		List<String> createdAtList = new ArrayList<String>();
 		boolean isNull = false;
 		try {
 			for (GitModel model : gitModel) {
 				String s = model.getEventType();
-				if (s.endsWith(event) && (isNull == s.equals(null))) {
+				if (s.endsWith(event)
+						&& (isNull == s.equals(null))) {
 					createdAtList.add(model.getCreatedAt());
 				}
 			}
