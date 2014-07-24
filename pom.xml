@@ -361,7 +361,7 @@
                           <exclude>src/main/webapp/hackyScript.js</exclude>
                           <exclude>src/main/webapp/myDirectoryForThirdyPartyStuff</exclude>
                      </excludes>
-                     <reporter>jslint</reporter>
+                     <reporter>checkstyle</reporter>
                      <reportFile>target/jshint.xml</reportFile>
                      <failOnError>false</failOnError>
                  </configuration>
