@@ -17,5 +17,5 @@ function loadDataAlerts(url1) {
 		$("#alerts-info").html(result);
 	}
 });}
-
 loadDataAlerts("/api/alerts/" + USER_NAME);
+

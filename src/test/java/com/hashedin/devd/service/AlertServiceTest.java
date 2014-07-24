@@ -53,7 +53,5 @@ public class AlertServiceTest extends TestCase {
 		service.save(alert, alert.getUserName());
 		alerts = service.find("MasroorHamdani");
 		assertEquals(alerts.size(), 1);
-		
-		
 	}
 }
