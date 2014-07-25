@@ -13,19 +13,19 @@
 <meta name="author" content="">
 <link rel="shortcut icon" href="images/favicon.png">
 <%
-//String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
+	//String username = SecurityContextHolder.getContext().getAuthentication().getName(); 
 	String username;
-	if(SecurityContextHolder.getContext()!= null){
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			
-			if (principal instanceof UserDetails) {
-			  username = ((UserDetails)principal).getUsername();
-			} else {
-			  username = principal.toString();
-			}
-	}
-	else {
-		username=null;
+	if (SecurityContextHolder.getContext() != null) {
+		Object principal = SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+	} else {
+		username = null;
 	}
 %>
 <title>Dev-D</title>
@@ -50,11 +50,7 @@
 <link rel="stylesheet" type="text/css"
 	href="js/jquery.nanoscroller/nanoscroller.css" />
 <link rel="stylesheet" type="text/css"
-	href="js/jquery.easypiechart/jquery.easy-pie-chart.css" />
-<link rel="stylesheet" type="text/css"
 	href="js/bootstrap.switch/bootstrap-switch.css" />
-<link rel="stylesheet" type="text/css"
-	href="js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="js/jquery.select2/select2.css" />
 <link rel="stylesheet" type="text/css"
@@ -81,14 +77,14 @@
 				<ul class="nav navbar-nav navbar-right user-nav">
 					<li class="dropdown profile_menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"><img
-							alt="Avatar" src="images/avatar2.jpg" /><%=username %> <b
+							alt="Avatar" src="images/avatar2.jpg" /><%=username%> <b
 							class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<!-- <li><a href="#">My Account</a></li>
 							<li><a href="#">Profile</a></li>
 							<li><a href="#">Messages</a></li>
 							<li class="divider"></li> -->
-							<li><a href="#">Sign Out</a></li>
+							<li><a href="/j_spring_security_logout">Sign Out</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right not-nav">
@@ -125,16 +121,7 @@
 							<!--alerts div for displaying alert-->
 
 						</div>
-						<div style="margin-left: 20px;" class="header">
-							<h3>
-								<font color=white> Your Activity </font>
-							</h3>
-						</div>
-						<div style="margin-left: 20px;" id="activity-info">
-							<!--alerts div for displaying alert-->
-
-
-						</div>
+						
 					</div>
 				</div>
 				<div class="text-right collapse-button" style="padding: 7px 9px;">
@@ -153,7 +140,7 @@
 			</div>
 			<div class="cl-mcont">
 				<div class="row">
-					<div class="col-sm-6 col-md-6" style="height: 600px;">
+					<div class="col-sm-6 col-md-6" style="width: 600px;">
 						<div class="block-flat">
 							<!--style="width: 550px; height: 400px;">-->
 							<div class="header">
@@ -161,9 +148,6 @@
 							</div>
 							<div id="commit_trend"></div>
 						</div>
-					</div>
-					
-					<div class="col-sm-6 col-md-6" style="height: 600px;">
 						<div class="block-flat">
 							<div class="header">
 								<h3>Pull Requests</h3>
@@ -199,13 +183,13 @@
 
 
 	<script type="text/javascript">
-      var USER_NAME = '<%=username %>'; // 
-      $(document).ready(function(){
-        //initialize the javascript
-        App.init();
-      //  App.charts();
-      });
-    </script>
+      var USER_NAME = '<%=username%>'; 
+		$(document).ready(function() {
+			//initialize the javascript
+			App.init();
+			//  App.charts();
+		});
+	</script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
